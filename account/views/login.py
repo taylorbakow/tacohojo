@@ -23,7 +23,7 @@ def process_request(request):
            login(request, user)
            return HttpResponseRedirect('/homepage/index', user)
         else:
-           raise forms.ValidationError("You are fired")
+           raise forms.ValidationError("Invalid Credentials")
     else:
         form = loginForm()
 
@@ -38,9 +38,7 @@ class loginForm(forms.Form):
    Password = forms.CharField(max_length=30, widget=forms.PasswordInput)
 
    def clean(self):
-       #data = self.cleaned_data['Password']
        user = authenticate(username=self.cleaned_data['Username'], password=self.cleaned_data['Password'])
        if user is None:
-           #ValueError("Username or password is incorrect")
            raise forms.ValidationError('Invalid Username or Password.')
        return self.cleaned_data

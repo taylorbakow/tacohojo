@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554753243.967734
+_modified_time = 1554758148.3891509
 _enable_loop = True
 _template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/app_base.htm'
 _template_uri = 'app_base.htm'
@@ -32,19 +32,19 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         def site_right():
             return render_site_right(context._locals(__M_locals))
+        def site_left():
+            return render_site_left(context._locals(__M_locals))
         def site_center():
             return render_site_center(context._locals(__M_locals))
         def content():
             return render_content(context._locals(__M_locals))
-        def site_left():
-            return render_site_left(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
             context['self'].content(**pageargs)
         
 
-        __M_writer('\r\n\r\n')
+        __M_writer('\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -55,12 +55,12 @@ def render_content(context,**pageargs):
     try:
         def site_right():
             return render_site_right(context)
+        def site_left():
+            return render_site_left(context)
         def site_center():
             return render_site_center(context)
         def content():
             return render_content(context)
-        def site_left():
-            return render_site_left(context)
         __M_writer = context.writer()
         __M_writer('\r\n    ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'site_left'):

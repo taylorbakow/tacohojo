@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554757005.7587647
+_modified_time = 1554758026.0022135
 _enable_loop = True
-_template_filename = 'C:/Users/jhoyo/Desktop/dmp/tacohojo/account/templates/login.html'
+_template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/account/templates/login.html'
 _template_uri = 'login.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -30,12 +30,12 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        self = context.get('self', UNDEFINED)
-        def site_center():
-            return render_site_center(context._locals(__M_locals))
         def title():
             return render_title(context._locals(__M_locals))
+        def site_center():
+            return render_site_center(context._locals(__M_locals))
         form = context.get('form', UNDEFINED)
+        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
@@ -67,12 +67,12 @@ def render_title(context,**pageargs):
 def render_site_center(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        self = context.get('self', UNDEFINED)
         def site_center():
             return render_site_center(context)
         form = context.get('form', UNDEFINED)
+        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('   \r\n  <form method="POST">\r\n    <table>\r\n    ')
+        __M_writer('   \r\n    <form method="POST">\r\n    <table>\r\n    ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( form.as_table() ))
         __M_writer('\r\n    </table>\r\n    <input type="submit" value="Login">\r\n  </form>\r\n')
         return ''
@@ -82,6 +82,6 @@ def render_site_center(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/account/templates/login.html", "uri": "login.html", "source_encoding": "utf-8", "line_map": {"29": 0, "40": 1, "45": 3, "55": 3, "61": 3, "67": 5, "75": 5, "76": 8, "77": 8, "83": 77}}
+{"filename": "C:/Users/Taylo/github/tacohojo/tacohojo/account/templates/login.html", "uri": "login.html", "source_encoding": "utf-8", "line_map": {"29": 0, "40": 1, "45": 3, "55": 3, "61": 3, "67": 5, "75": 5, "76": 8, "77": 8, "83": 77}}
 __M_END_METADATA
 """

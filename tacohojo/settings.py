@@ -82,6 +82,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tacohojo.wsgi.application'
 
+AUTH_USER_MODEL = 'account.User'
+
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
