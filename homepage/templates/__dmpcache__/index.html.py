@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554747487.7911525
+_modified_time = 1554753466.3731933
 _enable_loop = True
 _template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/index.html'
 _template_uri = 'index.html'
@@ -32,8 +32,6 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         def content():
             return render_content(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
-        utc_time = context.get('utc_time', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -51,12 +49,8 @@ def render_content(context,**pageargs):
     try:
         def content():
             return render_content(context)
-        self = context.get('self', UNDEFINED)
-        utc_time = context.get('utc_time', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\r\n    <div class="content">\r\n        <h3>Congratulations -- you\'ve successfully created a new DMP app!</h3>\r\n        <h4 class="utc-time">Current time in UTC: ')
-        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( utc_time ))
-        __M_writer('</h4>\r\n    </div>\r\n')
+        __M_writer('\r\n    <div class="content">\r\n        <p>CONTENT GOES HERE</p>\r\n        <form class="form-inline">\r\n            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">\r\n            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Prescriber</button>\r\n        </form>\r\n        <form class="form-inline">\r\n            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">\r\n            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Drug</button>\r\n        </form>\r\n    </div>\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -64,6 +58,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "38": 1, "43": 8, "49": 3, "57": 3, "58": 6, "59": 6, "65": 59}}
+{"filename": "C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "36": 1, "41": 15, "47": 3, "53": 3, "59": 53}}
 __M_END_METADATA
 """

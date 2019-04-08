@@ -6,19 +6,37 @@
 
         <title>DMP</title>
 
-        ## add any site-wide scripts or CSS here; for example, jquery:
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-        ## render the static file links with the same name as this template
         <script src="/django_mako_plus/dmp-common.min.js"></script>
         ${ django_mako_plus.links(self) }
+        <script src="${ STATIC_URL }homepage/media/jquery-3.3.1.js"></script>
+        <link rel="stylesheet" href="${ STATIC_URL }homepage/media/bootstrap-4.0.0-dist/css/bootstrap.min.css"></link>
+        <script src="${ STATIC_URL }homepage/media/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     </head>
     <body>
-
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+            <ul class="nav navbar-nav navbar-left">
+                <!-- PAGE IS ${ request.dmp.page } -->
+                <a href="/" class="navbar-left"><img src="${ STATIC_URL }homepage/media/Logo.png" style="width:50px; height:40px; margin-right:10px;"></a>
+                <li class="nav-item ${'active' if request.dmp.page == 'index' else ''}">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ${'active' if request.dmp.page == 'about' else ''}" href="/about/">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ${'active' if request.dmp.page == 'contact' else ''}" href="/contact/">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link ${'active' if request.dmp.page == 'analytics' else ''}" href="/analytics/">Analytics</a>
+                </li>
+            </ul>
+        </nav>
         <header>
-            <img src="${ STATIC_URL }homepage/media/python.png" alt="python" />
-            <div class="title">Welcome to <br/> DMP!</div>
+            <img src="${ STATIC_URL }homepage/media/logo.png" alt="python" />
+            <div class="title" style="color: black"> TACOHOJO CONSULTING </div>
         </header>
 
         <main>
@@ -27,9 +45,8 @@
             </%block>
         </main>
 
-        <footer>
-            <div><a href="http://django-mako-plus.readthedocs.io/">Online Documentation</a></div>
-            <div><a href="https://github.com/doconix/django-mako-plus/">DMP on GitHub</a></div>
+        <footer style="text-align: center">
+            <h2>Footer</h2>
         </footer>
 
     </body>
