@@ -5,10 +5,10 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554756898.866115
+_modified_time = 1554756904.6793659
 _enable_loop = True
 _template_filename = 'C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/base.htm'
-_template_uri = 'base.htm'
+_template_uri = '/homepage/templates/base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
 import django.utils.html
@@ -72,6 +72,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "28": 2, "29": 11, "30": 11, "31": 12, "32": 12, "33": 13, "34": 13, "35": 14, "36": 14, "37": 21, "38": 21, "39": 22, "40": 22, "41": 23, "42": 23, "43": 27, "44": 27, "45": 30, "46": 30, "47": 33, "48": 33, "49": 41, "50": 41, "55": 48, "61": 46, "67": 46, "73": 67}}
+{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "28": 2, "29": 11, "30": 11, "31": 12, "32": 12, "33": 13, "34": 13, "35": 14, "36": 14, "37": 21, "38": 21, "39": 22, "40": 22, "41": 23, "42": 23, "43": 27, "44": 27, "45": 30, "46": 30, "47": 33, "48": 33, "49": 41, "50": 41, "55": 48, "61": 46, "67": 46, "73": 67}}
 __M_END_METADATA
 """
