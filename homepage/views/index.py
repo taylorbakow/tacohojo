@@ -23,26 +23,26 @@ def process_request(request):
         if len(request.POST['prescribername']) > 0 and len(request.POST['drugname']) > 0:
             pname = request.POST['prescribername']
             dname = request.POST['drugname']
-            pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()
-            dList = hmod.Opioids.objects.filter(DrugName__icontains=dname).distinct()
+            pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()[0:10]
+            dList = hmod.Opioids.objects.filter(DrugName__icontains=dname).distinct()[0:10]
             pidList = []
             didList = []
             for p in pList:
                 pidList.append(p.id)
             for d in dList:
                 didList.append(d.id)
-            ddList = hmod.Drugs_Details.objects.filter(DrugID__in=didList, PrescriberID__in=pidList)
+            ddList = hmod.Drugs_Details.objects.filter(DrugID__in=didList, PrescriberID__in=pidList)[0:10]
             objectType = 'Both'
             print('Hooray')
         elif len(request.POST['prescribername']) > 0:
             print('prescriber')
             pname = request.POST['prescribername']
-            pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()
+            pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()[0:10]
             objectType = 'Prescriber'
         elif len(request.POST['drugname']) > 0:
             print('drug')
             dname = request.POST['drugname']
-            dList = hmod.Opioids.objects.filter(DrugName__icontains=dname).distinct()
+            dList = hmod.Opioids.objects.filter(DrugName__icontains=dname).distinct()[0:10]
             objectType = 'Drug'
     else:
         pass
