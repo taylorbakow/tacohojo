@@ -29,7 +29,9 @@
             %for p in prescribers:
             <tr>
                 <td></td>
-                %if group.name == 'Health Officials' and 'Data Clerks':
+                %if group.name == 'Health Officials':
+                    <td><a href="/homepage/details/${ p.id }"> ${ p.PrescriberID.Fname } ${ p.PrescriberID.Lname }</a></td>
+                %elif group.name == 'Data Clerks':
                     <td><a href="/homepage/details/${ p.id }"> ${ p.PrescriberID.Fname } ${ p.PrescriberID.Lname }</a></td>
                 %elif group.name == 'Prescribers':
                     <td><a href="/homepage/details/${ p.id }">${ p.PrescriberID.id }</a></td>
