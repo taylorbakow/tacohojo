@@ -13,5 +13,13 @@ def process_request(request, prescriber:hmod.Prescriber):
 
 
 @view_function
-def drugdetail(request, drug:hmod.Opioids):
-    return request.dmp.render('drugdetail.html')
+def drugdetail(request, drugid:hmod.Opioids):
+
+    drug = hmod.Drugs_Details.objects.filter(DrugID=drugid).first()
+    prescribers = hmod.Drugs_Details.objects.order_by('-QtyPrescribed').filter(DrugID=drugid)[0:10]
+
+    context={
+        'drug': drug,
+        'prescribers': prescribers,
+    }
+    return request.dmp.render('drugdetail.html', context)

@@ -1,0 +1,40 @@
+<%inherit file="app_base.htm" />
+
+<%block name="site_center">
+    <table class="table">
+        <thead>
+            <th></th>
+            <th>Drug Name</th>
+            <th>Is Opioids</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>${ drug.DrugID.DrugName }</td>
+                <td>${ drug.DrugID.IsOpioid }</td>
+                <td></td>
+            </tr>
+        </tbody> 
+    </table>
+    <table class="table">
+        <thead>
+            <th></th>
+            <th>Top 10 Prescribers</th>
+            <th>Gender</th>
+            <th># Prescribed</th>
+            <th></th>
+        </thead>
+        <tbody>
+            %for p in prescribers:
+            <tr>
+                <td></td>
+                <td>${ p.PrescriberID.Fname } ${ p.PrescriberID.Lname }</td>
+                <td>${ p.PrescriberID.Gender }</td>
+                <td>${ p.QtyPrescribed }</td>
+                <td></td>
+            </tr>
+            %endfor
+        </tbody> 
+    </table>
+</%block>
