@@ -7,31 +7,52 @@
             <form method="post">
                 <div class="row">
                     <div class="col"> ${ formP } </div>
-                    <div class="col" style="margin-top: 35px;"> <input type="submit" name="Prescriber" value="Search"></div>
-                </div>
-            </form>
-            <form method="post">
-                <div class="row">
                     <div class="col"> ${ formD } </div>
-                    <div class="col" style="margin-top: 35px;"> <input type="submit" name="Drug" value="Search"></div>
+                    <div class="col" style="margin-top: 35px;"> <input type="submit" value="Search"></div>
                 </div>
             </form>
             <div class="row">
                 %if objectType == 'Prescriber':
                     <ul>
-                    %for s in sList:
-                        <li><a href='/homepage/details/${ s.id }'>${s.Fname}  ${s.Lname}</a</li>
+                    %for p in pList:
+                        <li><a href='/homepage/details/${ p.id }'>${p.Fname}  ${p.Lname}</a</li>
                     %endfor
                     </ul>
                 %endif
                 %if objectType == 'Drug':
                     <ul>
-                    %for s in sList:
-                        <li><a href='/homepage/details.drugdetail/${ s.id }'>${s.DrugName}</a></li>
+                    %for d in dList:
+                        <li><a href='/homepage/details.drugdetail/${ d.id }'>${d.DrugName}</a></li>
                     %endfor
                     </ul>
                 %endif
             </div>
+            %if objectType == 'Both':
+                <ul>
+                %for p in pList:
+                    <li><a href='/homepage/details.drugdetail/${ p.id }'>${p.Fname}  ${p.Lname}</a></li>
+                %endfor
+                </ul>
+                <ul>
+                %for d in dList:
+                    <li><a href='/homepage/details.drugdetail/${ d.id }'>${d.DrugName}</a></li>
+                %endfor
+                </ul>
+                <table>
+                    <tr>
+                        <th>Drug Name</th>
+                        <th>Prescriber</th>
+                        <th>Quantity</th>
+                    </tr>
+                %for dd in ddList:
+                    <tr>
+                        <td><a href='/homepage/details.drugdetail/${ dd.DrugID }'>${dd.DrugID.DrugName}</a></td>
+                        <td><a href='/homepage/details.drugdetail/${ dd.PrescriberID }'></a>${dd.PrescriberID.Fname} ${dd.PrescriberID.Lname}</td>
+                        <td>${dd.QtyPrescribed}</td>         
+                    </tr>
+                %endfor
+                </table>
+            %endif
         </div>
     </div>
 </%block>
