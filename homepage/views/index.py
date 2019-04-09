@@ -6,41 +6,60 @@ from decimal import Decimal
 from homepage import models as hmod
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
+from django.db.models import Q 
 
 @view_function
 def process_request(request):
 
+    formP = PrescriberForm()
+    formD = DrugForm()
+    pList = []
+    dList = []
+    objectType = ''
+    ddList = []
+
     if request.method == 'POST':
-        if 'Prescriber' in request.POST:
-            name = request.POST['prescribername']
-            sList = hmod.Prescriber.objects.filter(Fname__icontains=name) | hmod.Prescriber.objects.filter(Lname__icontains=name)
-            sList
-            formP = PrescriberForm()
-            formD = DrugForm()
+        print('test')
+        if len(request.POST['prescribername']) > 0 and len(request.POST['drugname']) > 0:
+            pname = request.POST['prescribername']
+            dname = request.POST['drugname']
+            pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()
+            dList = hmod.Opioids.objects.filter(DrugName__icontains=dname).distinct()
+            pidList = []
+            didList = []
+            for p in pList:
+                pidList.append(p.id)
+            for d in dList:
+                didList.append(d.id)
+            ddList = hmod.Drugs_Details.objects.filter(DrugID__in=didList, PrescriberID__in=pidList)
+            objectType = 'Both'
+            print('Hooray')
+        elif len(request.POST['prescribername']) > 0:
+            print('prescriber')
+            pname = request.POST['prescribername']
+            pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()
             objectType = 'Prescriber'
-        elif 'Drug' in request.POST:
-            name = request.POST['drugname']
-            sList = hmod.Opioids.objects.filter(DrugName=name)
-            formP = PrescriberForm()
-            formD = DrugForm()
+        elif len(request.POST['drugname']) > 0:
+            print('drug')
+            dname = request.POST['drugname']
+            dList = hmod.Opioids.objects.filter(DrugName__icontains=dname).distinct()
             objectType = 'Drug'
     else:
-        formP = PrescriberForm()
-        formD = DrugForm()
-        sList = []
-        objectType = ''
+        pass
 
     context = {
         'formP': formP,
         'formD': formD,
-        'sList': sList,
+        'pList': pList,
+        'dList': dList,
         'objectType': objectType,
+        'ddList': ddList
     }
     return request.dmp.render('index.html', context)
 
 class PrescriberForm(forms.Form):
-    prescribername = forms.CharField(label='Prescriber', widget=forms.TextInput(attrs={'class' : 'form-control'}))
+    prescribername = forms.CharField(label='Prescriber', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber'}), required=False)
 
 class DrugForm(forms.Form):
-    drugname = forms.CharField(label='Drug', widget=forms.TextInput(attrs={'class' : 'form-control'}))
+    drugname = forms.CharField(label='Drug', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber'}), required=False)
 

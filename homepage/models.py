@@ -25,11 +25,16 @@ class Prescriber(models.Model):
     Credentials = models.TextField()
     Specialty = models.TextField()
     OpioidPrescriber = models.BooleanField()
-    StateAbbrev_id = models.ForeignKey('States', on_delete=models.CASCADE, db_column='StateAbbrev_id')
+    StateAbbrev = models.ForeignKey('States', on_delete=models.CASCADE, db_column='StateAbbrev')
     TotalPrescription = models.IntegerField()
-    
+    AcetaminophinCodeine = models.IntegerField(default=0)
+    Fentanyl = models.IntegerField(default=0)
+    HydrocodoneAcetaminophen = models.IntegerField(default=0)
+    OxycodoneAcetaminophen = models.IntegerField(default=0)
+    Oxycontin = models.IntegerField(default=0)
+
 class States(models.Model):
-    StateAbbrev_id = models.CharField(primary_key=True, max_length = 2, db_column='StateAbbrev_id')
+    StateAbbrev = models.CharField(primary_key=True, max_length = 2, db_column='StateAbbrev')
     StateName = models.TextField()
     Population = models.IntegerField()
     Deaths = models.IntegerField()
