@@ -27,3 +27,15 @@ def drugdetail(request, drugid:hmod.Opioids):
         'group': group,
     }
     return request.dmp.render('drugdetail.html', context)
+
+@view_function
+def prescriberdetail(request, prescriberid:hmod.Prescriber):
+
+    prescriber = hmod.Drugs_Details.objects.filter(PrescriberID=prescriberid).first()
+    group = request.user.groups.first()
+
+    context={
+        'prescriber': prescriber,
+        'group': group,
+    }
+    return request.dmp.render('prescriberdetail.html', context)

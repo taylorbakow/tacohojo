@@ -1,0 +1,26 @@
+<%inherit file="app_base.htm" />
+
+<%block name="site_center">
+    <table class="table">
+        <thead>
+            <th></th>
+            <th>Prescriber Name</th>
+            <th>Opioid Presciber</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>${ prescriber.PrescriberID.Fname }</td>
+                <td>
+                    %if (prescriber.PrescriberID.OpioidPrescriber) == True:
+                    Opiod
+                    %else: 
+                    Non-Opioid
+                    %endif
+                </td>
+                <td></td>
+            </tr>
+        </tbody> 
+    </table>
+</%block>
