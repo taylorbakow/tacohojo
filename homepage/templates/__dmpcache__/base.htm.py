@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554917287.7190053
+_modified_time = 1554924008.6798413
 _enable_loop = True
 _template_filename = 'C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/base.htm'
 _template_uri = 'base.htm'
@@ -19,11 +19,11 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        request = context.get('request', UNDEFINED)
+        self = context.get('self', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        self = context.get('self', UNDEFINED)
-        request = context.get('request', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n\r\n        <title>DMP</title>\r\n\r\n        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>\r\n        <script src="/django_mako_plus/dmp-common.min.js"></script>\r\n        ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( django_mako_plus.links(self) ))
@@ -49,7 +49,12 @@ def render_body(context,**pageargs):
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)('active' if request.dmp.page == 'contact' else ''))
         __M_writer('" href="/contact/">Contact</a>\r\n                </li>\r\n                <li class="nav-item">\r\n                    <a class="nav-link ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)('active' if request.dmp.page == 'analytics' else ''))
-        __M_writer('" href="/analytics/">Analytics</a>\r\n                </li>\r\n            </ul>\r\n            <ul class="nav navbar-nav navbar-right">\r\n                <li class="nav-item dropdown navbar-right">\r\n')
+        __M_writer('" href="/analytics/">Analytics</a>\r\n                </li>\r\n')
+        if request.user.groups.filter(name='Data Clerks').exists():
+            __M_writer('                    <li class="nav-item">\r\n                        <a class="nav-link ')
+            __M_writer(django_mako_plus.ExpressionPostProcessor(self)('active' if request.dmp.page == 'managedata' else ''))
+            __M_writer('" href="/managedata/">Manage</a>\r\n                    </li>\r\n')
+        __M_writer('            </ul>\r\n            <ul class="nav navbar-nav navbar-right">\r\n                <li class="nav-item dropdown navbar-right">\r\n')
         if request.user.is_authenticated:
             __M_writer('                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\r\n                        Welcome, ')
             __M_writer(django_mako_plus.ExpressionPostProcessor(self)( request.user.first_name ))
@@ -85,6 +90,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "28": 2, "29": 11, "30": 11, "31": 12, "32": 12, "33": 13, "34": 13, "35": 14, "36": 14, "37": 17, "38": 17, "39": 18, "40": 18, "41": 24, "42": 24, "43": 25, "44": 25, "45": 26, "46": 26, "47": 30, "48": 30, "49": 33, "50": 33, "51": 36, "52": 36, "53": 41, "54": 42, "55": 43, "56": 43, "57": 46, "58": 47, "59": 49, "60": 50, "61": 55, "62": 60, "63": 60, "68": 67, "74": 65, "80": 65, "86": 80}}
+{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "28": 2, "29": 11, "30": 11, "31": 12, "32": 12, "33": 13, "34": 13, "35": 14, "36": 14, "37": 17, "38": 17, "39": 18, "40": 18, "41": 24, "42": 24, "43": 25, "44": 25, "45": 26, "46": 26, "47": 30, "48": 30, "49": 33, "50": 33, "51": 36, "52": 36, "53": 38, "54": 39, "55": 40, "56": 40, "57": 43, "58": 46, "59": 47, "60": 48, "61": 48, "62": 51, "63": 52, "64": 54, "65": 55, "66": 60, "67": 65, "68": 65, "73": 72, "79": 70, "85": 70, "91": 85}}
 __M_END_METADATA
 """

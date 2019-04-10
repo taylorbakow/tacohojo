@@ -15,12 +15,10 @@
         <tbody>
             <tr>
                 <td></td>
-                %if group.name == 'Health Officials':
-                <td>${ prescriber.PrescriberID.Fname } ${ prescriber.PrescriberID.Lname }, ${ prescriber.PrescriberID.Credentials }</td>
-                %elif group.name == 'Data Clerks':
-                <td>${ prescriber.PrescriberID.Fname } ${ prescriber.PrescriberID.Lname }, ${ prescriber.PrescriberID.Credentials }</td>
-                %elif group.name == 'Prescribers':
+                %if request.user.groups.filter(name='Prescribers').exists():
                 <td>${ prescriber.PrescriberID.id }, ${ prescriber.PrescriberID.Credentials }</td>
+                %else:
+                <td>${ prescriber.PrescriberID.Fname } ${ prescriber.PrescriberID.Lname }, ${ prescriber.PrescriberID.Credentials }</td>
                 %endif
                 <td>${ prescriber.PrescriberID.StateAbbrev }</td>
                 <td>

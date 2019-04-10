@@ -35,6 +35,11 @@
                 <li class="nav-item">
                     <a class="nav-link ${'active' if request.dmp.page == 'analytics' else ''}" href="/analytics/">Analytics</a>
                 </li>
+                %if request.user.groups.filter(name='Data Clerks').exists():
+                    <li class="nav-item">
+                        <a class="nav-link ${'active' if request.dmp.page == 'managedata' else ''}" href="/managedata/">Manage</a>
+                    </li>
+                %endif
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item dropdown navbar-right">
