@@ -4,7 +4,7 @@
 
 <%block name="site_center">
     <div class="text-left">
-        <a class="btn btn-secondary btn-rounded mb-4 btn-reqest" href="/managedata.create.html/" data-toggle="modal" data-target="#modalContactForm" style="border: solid;">Add a New Prescriber</a>
+        <a class="btn btn-secondary btn-rounded mb-4 btn-reqest" href="/homepage/managedata.create/" data-toggle="modal" data-target="#modalContactForm" style="border: solid;">Add a New Prescriber</a>
     </div>
     <div class="grid" style="margin-top: 10px;">
         <form method="post">
@@ -46,7 +46,7 @@
                             <td style="width: 50px;">${ p.Specialty }</td>
                             <td style="text-align: center;">${ p.TotalPrescription }</td>
                             <td style="text-align: center;">${ p.AcetaminophinCodeine + p.Fentanyl + p.HydrocodoneAcetaminophen + p.OxycodoneAcetaminophen + p.Oxycontin}</td>
-                            <td><button class="btn">Edit</button> | <button class="btn">Delete</button></td>
+                            <td><a href="/homepage/managedata.edit/${ p.id }"><button class="btn">Edit</button></a> | <button class="btn">Delete</button></td>
                             <td></td>
                         </tr>
                         %endfor

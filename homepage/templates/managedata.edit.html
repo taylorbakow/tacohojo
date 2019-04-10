@@ -1,0 +1,36 @@
+<%inherit file="app_base.htm" />
+
+<%block name="title">Contact Page</%block>
+
+<%block name="site_center">
+    <div class="text-center">
+        <table class="table">
+            <thead>
+                <th></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Credentials</th>
+                <th>State</th>
+                <th>Presciber Type</th>
+                <th>Specialty</th>
+                <th># Prescriptions</th>
+                <th># Opioid Prescriptions</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>${ prescriber.Fname }</td> 
+                    <td>${ prescriber.Lname }</td>
+                    <td>${ prescriber.Credentials }</td>
+                    <td>${ prescriber.StateAbbrev.StateAbbrev }</td>
+                    <td>${ prescriber.OpioidPrescriber}</td>
+                    <td style="width: 50px;">${ prescriber.Specialty }</td>
+                    <td style="text-align: center;">${ prescriber.TotalPrescription }</td>
+                    <td style="text-align: center;">${ prescriber.AcetaminophinCodeine + prescriber.Fentanyl + prescriber.HydrocodoneAcetaminophen + prescriber.OxycodoneAcetaminophen + prescriber.Oxycontin}</td>
+                    <td></td>
+                </tr>
+            </tbody> 
+        </table>
+    </div>  
+</%block>
