@@ -5,13 +5,18 @@
         <thead>
             <th></th>
             <th>Prescriber Name</th>
-            <th>Opioid Presciber</th>
+            <th>State</th>
+            <th>Presciber Type</th>
+            <th>Specialty</th>
+            <th>Total Prescriptions</th>
+            <th>Total Opioid Prescriptions</th>
             <th></th>
         </thead>
         <tbody>
             <tr>
                 <td></td>
-                <td>${ prescriber.PrescriberID.Fname }</td>
+                <td>${ prescriber.PrescriberID.Fname } ${ prescriber.PrescriberID.Lname }, ${ prescriber.PrescriberID.Credentials }</td>
+                <td>${ prescriber.PrescriberID.StateAbbrev }</td>
                 <td>
                     %if (prescriber.PrescriberID.OpioidPrescriber) == True:
                     Opiod
@@ -19,8 +24,79 @@
                     Non-Opioid
                     %endif
                 </td>
+                <td>${ prescriber.PrescriberID.Specialty }</td>
+                <td>${ prescriber.PrescriberID.TotalPrescription }</td>
+                <td>${ prescriber.PrescriberID.AcetaminophinCodeine + prescriber.PrescriberID.Fentanyl + prescriber.PrescriberID.HydrocodoneAcetaminophen + prescriber.PrescriberID.OxycodoneAcetaminophen + prescriber.PrescriberID.Oxycontin}</td>
                 <td></td>
             </tr>
         </tbody> 
     </table>
+    <div class='tableauPlaceholder' id='viz1554849453936' style='position: relative'>
+        <noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;In&#47;Intex_Opioids&#47;Howmanyofeachdrugs&#47;1_rss.png' style='border: none' /></a>
+        </noscript>
+        <object class='tableauViz'  style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+            <param name='embed_code_version' value='3' /> 
+            <param name='site_root' value='' />
+            <param name='name' value='Intex_Opioids&#47;Howmanyofeachdrugs' />
+            <param name='tabs' value='yes' /><param name='toolbar' value='yes' />
+            <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;In&#47;Intex_Opioids&#47;Howmanyofeachdrugs&#47;1.png' /> 
+            <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' /><param name='filter' value='publish=yes' />
+        </object>
+    </div>  
+
+    <script type='text/javascript' src='http://public.tableau.com/javascripts/api/tableau-2.0.0.min.js'>
+    </script>
+
+    <script type='text/javascript'>                   
+        
+        var workbook, activeSheet;
+
+            var divElement = document.getElementById('viz1554849453936');                    
+            var vizElement = divElement.getElementsByTagName('object')[0];                    
+            vizElement.style.width='100%';
+            vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    
+            var scriptElement = document.createElement('script');                    
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+
+        function initViz() {
+            var workbook, activeSheet;
+            var containerDiv = document.getElementById("vizContainer"),
+            url = "https://public.tableau.com/views/Intex_Opioids/Howmanyofeachdrugs?:embed=y&:display_count=yes&publish=yes";
+
+            var options = {
+                width: placeholderDiv.offsetWidth,
+                height: placeholderDiv.offsetHeight,
+                hideTabs: true,
+                hideToolbar: true,
+                onFirstInteractive: function () {
+                    workbook = viz.getWorkbook();
+                    activeSheet = workbook.getActiveSheet();
+                }
+            };
+
+            var viz = new tableau.Viz(containerDiv, url);
+        }
+
+        activeSheet.applyFilterAsync(
+            "Id",
+            ${ prescriber.PrescriberID.id },
+            tableau.FilterUpdateType.REPLACE);
+
+        
+
+        //function filterSingleValue() {
+            
+        //}
+    </script>
+    <div onlaod="initViz();">
+
+        <!--<input type="button" value=${ prescriber.PrescriberID.id } onclick="filterSingleValue();">-->
+        <div id="vizContainer">
+
+        </div>
+    </div>  
 </%block>
