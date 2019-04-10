@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554865327.1868706
+_modified_time = 1554924206.950325
 _enable_loop = True
 _template_filename = 'C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/prescriberdetail.html'
 _template_uri = 'prescriberdetail.html'
@@ -30,11 +30,11 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        request = context.get('request', UNDEFINED)
         self = context.get('self', UNDEFINED)
-        group = context.get('group', UNDEFINED)
+        prescriber = context.get('prescriber', UNDEFINED)
         def site_center():
             return render_site_center(context._locals(__M_locals))
-        prescriber = context.get('prescriber', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'site_center'):
@@ -49,32 +49,24 @@ def render_body(context,**pageargs):
 def render_site_center(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        request = context.get('request', UNDEFINED)
         self = context.get('self', UNDEFINED)
-        group = context.get('group', UNDEFINED)
+        prescriber = context.get('prescriber', UNDEFINED)
         def site_center():
             return render_site_center(context)
-        prescriber = context.get('prescriber', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <table class="table">\r\n        <thead>\r\n            <th></th>\r\n            <th>Prescriber Name</th>\r\n            <th>State</th>\r\n            <th>Presciber Type</th>\r\n            <th>Specialty</th>\r\n            <th>Total Prescriptions</th>\r\n            <th>Total Opioid Prescriptions</th>\r\n            <th></th>\r\n        </thead>\r\n        <tbody>\r\n            <tr>\r\n                <td></td>\r\n')
-        if group.name == 'Health Officials':
-            __M_writer('                <td>')
-            __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.Fname ))
-            __M_writer(' ')
-            __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.Lname ))
-            __M_writer(', ')
-            __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.Credentials ))
-            __M_writer('</td>\r\n')
-        elif group.name == 'Data Clerks':
-            __M_writer('                <td>')
-            __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.Fname ))
-            __M_writer(' ')
-            __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.Lname ))
-            __M_writer(', ')
-            __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.Credentials ))
-            __M_writer('</td>\r\n')
-        elif group.name == 'Prescribers':
+        if request.user.groups.filter(name='Prescribers').exists():
             __M_writer('                <td>')
             __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.id ))
+            __M_writer(', ')
+            __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.Credentials ))
+            __M_writer('</td>\r\n')
+        else:
+            __M_writer('                <td>')
+            __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.Fname ))
+            __M_writer(' ')
+            __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.Lname ))
             __M_writer(', ')
             __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.Credentials ))
             __M_writer('</td>\r\n')
@@ -103,6 +95,6 @@ def render_site_center(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/prescriberdetail.html", "uri": "prescriberdetail.html", "source_encoding": "utf-8", "line_map": {"29": 0, "39": 1, "49": 3, "58": 3, "59": 18, "60": 19, "61": 19, "62": 19, "63": 19, "64": 19, "65": 19, "66": 19, "67": 20, "68": 21, "69": 21, "70": 21, "71": 21, "72": 21, "73": 21, "74": 21, "75": 22, "76": 23, "77": 23, "78": 23, "79": 23, "80": 23, "81": 25, "82": 25, "83": 25, "84": 27, "85": 28, "86": 29, "87": 30, "88": 32, "89": 33, "90": 33, "91": 34, "92": 34, "93": 35, "94": 35, "95": 91, "96": 91, "97": 102, "98": 102, "104": 98}}
+{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/prescriberdetail.html", "uri": "prescriberdetail.html", "source_encoding": "utf-8", "line_map": {"29": 0, "39": 1, "49": 3, "58": 3, "59": 18, "60": 19, "61": 19, "62": 19, "63": 19, "64": 19, "65": 20, "66": 21, "67": 21, "68": 21, "69": 21, "70": 21, "71": 21, "72": 21, "73": 23, "74": 23, "75": 23, "76": 25, "77": 26, "78": 27, "79": 28, "80": 30, "81": 31, "82": 31, "83": 32, "84": 32, "85": 33, "86": 33, "87": 89, "88": 89, "89": 100, "90": 100, "96": 90}}
 __M_END_METADATA
 """

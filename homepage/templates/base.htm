@@ -9,11 +9,13 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="/django_mako_plus/dmp-common.min.js"></script>
         ${ django_mako_plus.links(self) }
-        <script src="${ STATIC_URL }homepage/media/jquery-3.3.1.js"></script>
+        <script src="${ STATIC_URL }homepage/media/jquery-3.3.1.js"></script><!-- 
         <link rel="stylesheet" href="${ STATIC_URL }homepage/media/bootstrap-4.0.0-dist/css/bootstrap.min.css"></link>
-        <script src="${ STATIC_URL }homepage/media/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+        <script src="${ STATIC_URL }homepage/media/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script> -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
+        <script src="${ STATIC_URL }homepage/media/bootstrap-4.0.0-dist/js/bootstrap.bundle.js"></script>
+        <link rel="stylesheet" href="${ STATIC_URL }homepage/media/bootstrap-4.0.0-dist/css/bootstrap.css">
 
     </head>
     <body>
@@ -33,6 +35,11 @@
                 <li class="nav-item">
                     <a class="nav-link ${'active' if request.dmp.page == 'analytics' else ''}" href="/analytics/">Analytics</a>
                 </li>
+                %if request.user.groups.filter(name='Data Clerks').exists():
+                    <li class="nav-item">
+                        <a class="nav-link ${'active' if request.dmp.page == 'managedata' else ''}" href="/managedata/">Manage</a>
+                    </li>
+                %endif
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item dropdown navbar-right">
