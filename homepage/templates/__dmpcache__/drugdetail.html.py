@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554840696.328358
+_modified_time = 1554849581.2061498
 _enable_loop = True
 _template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/drugdetail.html'
 _template_uri = 'drugdetail.html'
@@ -30,12 +30,12 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        group = context.get('group', UNDEFINED)
         self = context.get('self', UNDEFINED)
+        prescribers = context.get('prescribers', UNDEFINED)
+        drug = context.get('drug', UNDEFINED)
         def site_center():
             return render_site_center(context._locals(__M_locals))
-        drug = context.get('drug', UNDEFINED)
-        prescribers = context.get('prescribers', UNDEFINED)
+        group = context.get('group', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'site_center'):
@@ -50,12 +50,12 @@ def render_body(context,**pageargs):
 def render_site_center(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        group = context.get('group', UNDEFINED)
         self = context.get('self', UNDEFINED)
+        prescribers = context.get('prescribers', UNDEFINED)
+        drug = context.get('drug', UNDEFINED)
         def site_center():
             return render_site_center(context)
-        drug = context.get('drug', UNDEFINED)
-        prescribers = context.get('prescribers', UNDEFINED)
+        group = context.get('group', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <table class="table">\r\n        <thead>\r\n            <th></th>\r\n            <th>Drug Name</th>\r\n            <th>Is Opioids</th>\r\n            <th></th>\r\n        </thead>\r\n        <tbody>\r\n            <tr>\r\n                <td></td>\r\n                <td>')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( drug.DrugID.DrugName ))

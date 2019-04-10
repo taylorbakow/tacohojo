@@ -1,12 +1,18 @@
-<%inherit file="/homepage/templates/app_base.htm" />
+<%inherit file="/homepage/templates/app_base.htm"/>
 
 <%block name="title">Login</%block>
 
-<%block name="site_center">   
+<%block name="content">   
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <img src="${ STATIC_URL }homepage/media/Logo.png" id="icon" alt="User Icon" style="height: 50px; width: 50px;"/>
+    </div>
     <form method="POST">
-    <table>
-    ${ form.as_table() }
-    </table>
-    <input type="submit" value="Login">
-  </form>
+      ${ form.as_table() }
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+  </div>
+</div>
 </%block>
