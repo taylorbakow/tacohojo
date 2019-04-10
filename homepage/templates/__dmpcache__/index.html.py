@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554857616.467889
+_modified_time = 1554860602.7470183
 _enable_loop = True
 _template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/index.html'
 _template_uri = 'index.html'
@@ -30,15 +30,15 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        objectType = context.get('objectType', UNDEFINED)
         ddList = context.get('ddList', UNDEFINED)
-        dList = context.get('dList', UNDEFINED)
-        pList = context.get('pList', UNDEFINED)
+        self = context.get('self', UNDEFINED)
+        formD = context.get('formD', UNDEFINED)
+        formP = context.get('formP', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
-        formP = context.get('formP', UNDEFINED)
-        formD = context.get('formD', UNDEFINED)
-        objectType = context.get('objectType', UNDEFINED)
+        pList = context.get('pList', UNDEFINED)
+        dList = context.get('dList', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -54,15 +54,15 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        objectType = context.get('objectType', UNDEFINED)
         ddList = context.get('ddList', UNDEFINED)
-        dList = context.get('dList', UNDEFINED)
-        pList = context.get('pList', UNDEFINED)
+        self = context.get('self', UNDEFINED)
+        formD = context.get('formD', UNDEFINED)
+        formP = context.get('formP', UNDEFINED)
         def content():
             return render_content(context)
-        self = context.get('self', UNDEFINED)
-        formP = context.get('formP', UNDEFINED)
-        formD = context.get('formD', UNDEFINED)
-        objectType = context.get('objectType', UNDEFINED)
+        pList = context.get('pList', UNDEFINED)
+        dList = context.get('dList', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <div class="content">\r\n')
         if objectType is '':
@@ -78,7 +78,7 @@ def render_content(context,**pageargs):
         if objectType == 'Prescriber' or objectType == 'Both':
             __M_writer('                    <div class="col">\r\n                        <table class="table table-hover" id="dev-table">\r\n                            <tr>\r\n                                <th>Full Name</th>\r\n                            </tr>\r\n')
             for p in pList:
-                __M_writer("                            <tr>\r\n                                <td><a href='/homepage/details/")
+                __M_writer("                            <tr>\r\n                                <td><a href='/homepage/details.prescriberdetail/")
                 __M_writer(django_mako_plus.ExpressionPostProcessor(self)( p.id ))
                 __M_writer("'>")
                 __M_writer(django_mako_plus.ExpressionPostProcessor(self)(p.Fname))
@@ -103,7 +103,7 @@ def render_content(context,**pageargs):
                 __M_writer(django_mako_plus.ExpressionPostProcessor(self)( dd.DrugID.id ))
                 __M_writer("'>")
                 __M_writer(django_mako_plus.ExpressionPostProcessor(self)(dd.DrugID.DrugName))
-                __M_writer("</a></td>\r\n                        <td><a href='/homepage/details/")
+                __M_writer("</a></td>\r\n                        <td><a href='/homepage/details.prescriberdetail/")
                 __M_writer(django_mako_plus.ExpressionPostProcessor(self)( dd.PrescriberID.id ))
                 __M_writer("'>")
                 __M_writer(django_mako_plus.ExpressionPostProcessor(self)(dd.PrescriberID.Fname))

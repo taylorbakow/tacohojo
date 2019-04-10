@@ -63,7 +63,6 @@
             vizElement.parentNode.insertBefore(scriptElement, vizElement);
 
         function initViz() {
-            var workbook, activeSheet;
             var containerDiv = document.getElementById("vizContainer"),
             url = "https://public.tableau.com/views/Intex_Opioids/Howmanyofeachdrugs?:embed=y&:display_count=yes&publish=yes";
 
@@ -92,7 +91,7 @@
             
         //}
     </script>
-    <div onlaod="initViz();">
+    <div onload="initViz()">
 
         <!--<input type="button" value=${ prescriber.PrescriberID.id } onclick="filterSingleValue();">-->
         <div id="vizContainer">

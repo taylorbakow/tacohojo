@@ -25,7 +25,7 @@
                             </tr>
                         %for p in pList:
                             <tr>
-                                <td><a href='/homepage/details/${ p.id }'>${p.Fname} ${p.Lname}</a></td>
+                                <td><a href='/homepage/details.prescriberdetail/${ p.id }'>${p.Fname} ${p.Lname}</a></td>
                             </tr>
                         %endfor
                         </table>
@@ -58,7 +58,7 @@
                 %for dd in ddList:
                     <tr>
                         <td><a href='/homepage/details.drugdetail/${ dd.DrugID.id }'>${dd.DrugID.DrugName}</a></td>
-                        <td><a href='/homepage/details/${ dd.PrescriberID.id }'>${dd.PrescriberID.Fname} ${dd.PrescriberID.Lname}</a></td>
+                        <td><a href='/homepage/details.prescriberdetail/${ dd.PrescriberID.id }'>${dd.PrescriberID.Fname} ${dd.PrescriberID.Lname}</a></td>
                         <td>${dd.QtyPrescribed}</td>         
                     </tr>
                 %endfor
