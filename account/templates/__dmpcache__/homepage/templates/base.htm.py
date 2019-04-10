@@ -5,11 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-<<<<<<< HEAD
-_modified_time = 1554912205.7830443
-=======
 _modified_time = 1554923999.9714146
->>>>>>> 6dca431b713802861c3b153dec4518210bb7c5e3
 _enable_loop = True
 _template_filename = 'C:/Users/Think/tacohojo/homepage/templates/base.htm'
 _template_uri = '/homepage/templates/base.htm'
@@ -30,12 +26,6 @@ def render_body(context,**pageargs):
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-<<<<<<< HEAD
-        request = context.get('request', UNDEFINED)
-        self = context.get('self', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-=======
->>>>>>> 6dca431b713802861c3b153dec4518210bb7c5e3
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n\r\n        <title>DMP</title>\r\n\r\n        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>\r\n        <script src="/django_mako_plus/dmp-common.min.js"></script>\r\n        ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( django_mako_plus.links(self) ))
