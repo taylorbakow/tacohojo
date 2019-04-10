@@ -1,0 +1,10 @@
+__dmpcache__/
+__pycache__/
+.vscode/
+*.pyc
+.sqlite3/
+*__dmpcache__/
+*__pycache__/
+*.vscode/
+*.pyc
+*.sqlite3/

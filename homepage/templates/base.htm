@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="${ STATIC_URL }homepage/media/bootstrap-4.0.0-dist/css/bootstrap.min.css"></link>
         <script src="${ STATIC_URL }homepage/media/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
 
     </head>
     <body>
@@ -37,7 +38,7 @@
                 <li class="nav-item dropdown navbar-right">
                     % if request.user.is_authenticated:
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Welcome, ${ request.user.username }
+                        Welcome, ${ request.user.first_name }
                     </a>
                     % endif
                     % if not request.user.is_authenticated:
@@ -64,7 +65,7 @@
             </%block>
         </main>
 
-        <footer style="text-align: center">
+        <footer style="text-align: center; margin-bottom: 10px;">
             <h2>Footer</h2>
         </footer>
 

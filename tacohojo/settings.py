@@ -91,10 +91,10 @@ AUTH_USER_MODEL = 'account.User'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tacohojo',
-        'USER': 'taylorbakow',
-        'PASSWORD': 'taylorbakow',
-        'HOST': 'localhost',
+        'NAME': 'postgres',
+        'USER': 'Tacohojo123@tacohojo',
+        'PASSWORD': 'Tac0h0j0123',
+        'HOST': 'tacohojo.postgres.database.azure.com',
         'PORT': '5432',
     }
 }

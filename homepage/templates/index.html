@@ -2,14 +2,68 @@
 
 <%block name="content">
     <div class="content">
-        <p>CONTENT GOES HERE</p>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Prescriber</button>
-        </form>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Drug</button>
-        </form>
+        %if objectType is '':
+            <p>I don't think anybody knows it was Russia that wrote Lorem Ipsum, but I don't know, maybe it was. It could be Russia, but it could also be China. It could also be lots of other people. It also could be some wordsmith sitting on their bed that weights 400 pounds. Ok?</p>
+        %endif
+        <div class="grid" style="margin-top: 30px;">
+            <form method="post">
+                <div class="row" style="width: 95%;">
+                    <div class="col"> ${ formP } </div>
+                    <div class="col"> ${ formD } </div>
+                    <div class="col" style="margin-left: -90px;"><input style="width: 140px;" class="button is-dark" type="submit" value="Search"></div>
+                </div>
+            </form>
+            %if objectType is not '':
+                <h1 class="title">Search Results:</h1>
+            %endif
+            <div class="row">
+                %if objectType == 'Prescriber' or objectType == 'Both':
+                    <div class="col">
+                        <table class="table table-hover" id="dev-table">
+                            <tr>
+                                <th>Full Name</th>
+                            </tr>
+                        %for p in pList:
+                            <tr>
+                                <td><a href='/homepage/details.prescriberdetail/${ p.id }'>${p.Fname} ${p.Lname}</a></td>
+                            </tr>
+                        %endfor
+                        </table>
+                    </div>  
+                %endif
+                %if objectType == 'Drug' or objectType == 'Both':
+                    <div class="col">
+                        <table class="table table-hover" id="dev-table">
+                            <tr>
+                                <th>Drug Name</th>
+                            </tr>
+                        %for d in dList:
+                            <tr>
+                                <td><a href='/homepage/details.drugdetail/${ d.id }'>${d.DrugName}</a></td>
+                            </tr>
+                        %endfor
+                        </table>
+                    </div>
+                %endif
+            </div>
+            %if objectType == 'Both':
+                <br/>
+                <h1 class="title">Prescriber Stats:</h1>
+                <table class="table table-hover" id="dev-table">
+                    <tr>
+                        <th>Drug Name</th>
+                        <th>Prescriber</th>
+                        <th>Quantity</th>
+                    </tr>
+                %for dd in ddList:
+                    <tr>
+                        <td><a href='/homepage/details.drugdetail/${ dd.DrugID.id }'>${dd.DrugID.DrugName}</a></td>
+                        <td><a href='/homepage/details.prescriberdetail/${ dd.PrescriberID.id }'>${dd.PrescriberID.Fname} ${dd.PrescriberID.Lname}</a></td>
+                        <td>${dd.QtyPrescribed}</td>         
+                    </tr>
+                %endfor
+                </table>
+            %endif
+        </div>
     </div>
 </%block>
