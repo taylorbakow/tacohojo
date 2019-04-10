@@ -6,19 +6,20 @@
     <div class="text-left">
         <a class="btn btn-secondary btn-rounded mb-4 btn-reqest" href="/managedata.create.html/" data-toggle="modal" data-target="#modalContactForm" style="border: solid;">Add a New Prescriber</a>
     </div>
-    <div class="grid" style="margin-top: 30px;">
+    <div class="grid" style="margin-top: 10px;">
         <form method="post">
             <div class="row" style="width: 95%;">
                 <div class="col"> ${ formP } </div>
                 <div class="col" style="margin-left: -90px;"><input style="width: 140px;" class="button is-dark" type="submit" value="Search"></div>
             </div>
         </form>
+        <br />
         %if objectType is not '':
             <h1 class="title">Search Results:</h1>
         %endif
         <div class="row">
         %if objectType == 'Prescriber':
-            <div class="col">
+            <div class="col" style="padding-left: 40px; padding-right: 40px">
                 <table class="table table-hover" id="dev-table">
                     <thead>
                         <th></th>
@@ -28,8 +29,8 @@
                         <th>State</th>
                         <th>Presciber Type</th>
                         <th>Specialty</th>
-                        <th>Total Prescriptions</th>
-                        <th>Total Opioid Prescriptions</th>
+                        <th># Prescriptions</th>
+                        <th># Opioid Prescriptions</th>
                         <th></th>
                         <th></th>
                     </thead>
@@ -42,9 +43,9 @@
                             <td>${ p.Credentials }</td>
                             <td>${ p.StateAbbrev }</td>
                             <td>${ p.OpioidPrescriber}</td>
-                            <td>${ p.Specialty }</td>
-                            <td>${ p.TotalPrescription }</td>
-                            <td>${ p.AcetaminophinCodeine + p.Fentanyl + p.HydrocodoneAcetaminophen + p.OxycodoneAcetaminophen + p.Oxycontin}</td>
+                            <td style="width: 50px;">${ p.Specialty }</td>
+                            <td style="text-align: center;">${ p.TotalPrescription }</td>
+                            <td style="text-align: center;">${ p.AcetaminophinCodeine + p.Fentanyl + p.HydrocodoneAcetaminophen + p.OxycodoneAcetaminophen + p.Oxycontin}</td>
                             <td><button class="btn">Edit</button> | <button class="btn">Delete</button></td>
                             <td></td>
                         </tr>

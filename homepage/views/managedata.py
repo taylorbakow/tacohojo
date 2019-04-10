@@ -33,7 +33,7 @@ def process_request(request):
     return request.dmp.render('managedata.html', context)
 
 class PrescriberForm(forms.Form):
-    prescribername = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber', 'placeholder' :'Search by Prescriber'}), required=False)
+    prescribername = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber', 'placeholder' :'Search by Prescriber', 'style' : 'width: 90%;'}), required=False)
 
 view_function
 def create(request):
