@@ -29,12 +29,10 @@
             %for p in prescribers:
             <tr>
                 <td></td>
-                %if group.name == 'Health Officials':
-                    <td><a href="/homepage/details.prescriberdetail/${ p.PrescriberID.id  }"> ${ p.PrescriberID.Fname } ${ p.PrescriberID.Lname }</a></td>
-                %elif group.name == 'Data Clerks':
-                    <td><a href="/homepage/details.prescriberdetail/${ p.PrescriberID.id  }"> ${ p.PrescriberID.Fname } ${ p.PrescriberID.Lname }</a></td>
-                %elif group.name == 'Prescribers':
+                %if request.user.groups.filter(name='Prescribers').exists():
                     <td><a href="/homepage/details.prescriberdetail/${ p.PrescriberID.id  }">${ p.PrescriberID.id }</a></td>
+                %else:
+                    <td><a href="/homepage/details.prescriberdetail/${ p.PrescriberID.id  }"> ${ p.PrescriberID.Fname } ${ p.PrescriberID.Lname }</a></td>
                 %endif
                 <td>${ p.PrescriberID.Gender }</td>
                 <td>${ p.QtyPrescribed }</td>

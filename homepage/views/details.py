@@ -20,12 +20,10 @@ def drugdetail(request, drugid:hmod.Opioids):
 
     drug = hmod.Drugs_Details.objects.filter(DrugID=drugid).first()
     prescribers = hmod.Drugs_Details.objects.order_by('-QtyPrescribed').filter(DrugID=drugid)[0:10]
-    group = request.user.groups.first()
 
     context={
         'drug': drug,
         'prescribers': prescribers,
-        'group': group,
     }
     return request.dmp.render('drugdetail.html', context)
 
@@ -33,6 +31,7 @@ def drugdetail(request, drugid:hmod.Opioids):
 def prescriberdetail(request, prescriberid:hmod.Prescriber):
 
     prescriber = hmod.Drugs_Details.objects.filter(PrescriberID=prescriberid).first()
+<<<<<<< HEAD
     drugs = hmod.Drugs_Details.objects.order_by('-QtyPrescribed').filter(PrescriberID=prescriberid)
     group = request.user.groups.first()
     
@@ -41,5 +40,10 @@ def prescriberdetail(request, prescriberid:hmod.Prescriber):
         'prescriber': prescriber,
         'drugs': drugs,
         'group': group,
+=======
+
+    context={
+        'prescriber': prescriber,
+>>>>>>> 6dca431b713802861c3b153dec4518210bb7c5e3
     }
     return request.dmp.render('prescriberdetail.html', context)

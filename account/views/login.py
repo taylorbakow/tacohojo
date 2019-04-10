@@ -27,8 +27,11 @@ def process_request(request):
     else:
         form = loginForm()
 
+    group = request.user.groups.first()
+
     context = {
-        'form': form
+        'form': form,
+        'group': group,
     }   
     return request.dmp.render('login.html', context)
 

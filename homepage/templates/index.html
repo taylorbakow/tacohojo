@@ -3,17 +3,56 @@
 <%block name="content">
     <div class="content">
         %if objectType is '':
-            <p>I don't think anybody knows it was Russia that wrote Lorem Ipsum, but I don't know, maybe it was. It could be Russia, but it could also be China. It could also be lots of other people. It also could be some wordsmith sitting on their bed that weights 400 pounds. Ok?</p>
+            <p>I don't think anybody knows it was Russia that wrote Tacohojo, but I don't know, maybe it was. It could be Russia, but it could also be China. It could also be lots of other people. It also could be some wordsmith sitting on their bed that weights 400 pounds. Ok?</p>
         %endif
+        <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Write to us</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                        <label data-error="wrong" data-success="right" for="form34">Your name</label>
+                        <input type="text" id="form34" class="form-control validate" value="${ request.user.first_name } ${ request.user.last_name }">
+                    </div>
+        
+                    <div class="md-form mb-5">
+                        <label data-error="wrong" data-success="right" for="form29">Your email</label>
+                        <input type="email" id="form29" class="form-control validate" value="${ request.user.email }">
+                    </div>
+        
+                    <div class="md-form mb-5">
+                        <label data-error="wrong" data-success="right" for="form32">Subject</label>
+                        <input type="text" id="form32" class="form-control validate">
+                    </div>
+        
+                    <div class="md-form">
+                        <label data-error="wrong" data-success="right" for="form8">Your message</label>
+                        <textarea type="text" id="form8" class="md-textarea form-control" rows="4"></textarea>
+                    </div>
+        
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        
+            <div class="text-center">
+                <a href="/homepage/index/" class="btn btn-default btn-rounded mb-4 btn-reqest" data-toggle="modal" data-target="#modalContactForm" style="border: solid;">Request More Features</a>
+            </div>
         <div class="grid" style="margin-top: 30px;">
             <form method="post">
                 <div class="row" style="width: 95%;">
-                    %if group.name == 'Health Officials':
-                    <div class="col"> ${ formP } </div>
-                    %elif group.name == 'Data Clerks':
-                    <div class="col"> ${ formP } </div>
-                    %elif group.name == 'Prescribers':
+                    %if request.user.groups.filter(name='Prescribers').exists():
                     <div class="col"><div hidden> ${ formP } </div></div>
+                    %else:
+                    <div class="col"> ${ formP } </div>
                     %endif
                     <div class="col"> ${ formD } </div>
                     <div class="col" style="margin-left: -90px;"><input style="width: 140px;" class="button is-dark" type="submit" value="Search"></div>

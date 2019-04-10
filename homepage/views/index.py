@@ -47,7 +47,6 @@ def process_request(request):
         else:
             pass
 
-        group = request.user.groups.first()
         context = {
             'formP': formP,
             'formD': formD,
@@ -55,7 +54,6 @@ def process_request(request):
             'dList': dList,
             'objectType': objectType,
             'ddList': ddList,
-            'group': group
         }
         return request.dmp.render('index.html', context)
     else:
