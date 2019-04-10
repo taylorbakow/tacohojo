@@ -3,50 +3,55 @@
 <%block name="title">Contact Page</%block>
 
 <%block name="site_center">
-    <div class="text-center">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-3"></div>
-                <div class="col-3">
-                    <a class="btn btn-default btn-rounded mb-4 btn-reqest" href="/managedata.create.html/" data-toggle="modal" data-target="#modalContactForm" style="border: solid;">Add a New Prescriber</a>
-                </div>
-                <div class="col-3">
-                    <a href="" class="btn btn-default btn-rounded mb-4 btn-reqest" data-toggle="modal" data-target="#modalContactForm" style="border: solid;">Edit/Delete Prescriber List</a>
-                </div>
-                <div class="col-3"></div>
-            </div>
-        </div>
+    <div class="text-left">
+        <a class="btn btn-secondary btn-rounded mb-4 btn-reqest" href="/managedata.create.html/" data-toggle="modal" data-target="#modalContactForm" style="border: solid;">Add a New Prescriber</a>
     </div>
-    <table class="table">
-        <thead>
-            <th></th>
-            <th>Prescriber Name</th>
-            <th>State</th>
-            <th>Presciber Type</th>
-            <th>Specialty</th>
-            <th>Total Prescriptions</th>
-            <th>Total Opioid Prescriptions</th>
-            <th></th>
-        </thead>
-        <tbody>
-            %for p in prescribers:
-            <tr>
-                <td></td>
-                <td>${ p.Fname } ${ p.Lname }, ${ p.Credentials }</td>
-                <td>${ p.StateAbbrev }</td>
-                <td>
-                    %if (p.OpioidPrescriber) == True:
-                    Opiod
-                    %else: 
-                    Non-Opioid
-                    %endif
-                </td>
-                <td>${ p.Specialty }</td>
-                <td>${ p.TotalPrescription }</td>
-                <td>${ p.AcetaminophinCodeine + p.Fentanyl + p.HydrocodoneAcetaminophen + p.OxycodoneAcetaminophen + p.Oxycontin}</td>
-                <td></td>
-            </tr>
-            %endfor
-        </tbody> 
-    </table>
+    <div class="grid" style="margin-top: 30px;">
+        <form method="post">
+            <div class="row" style="width: 95%;">
+                <div class="col"> ${ formP } </div>
+                <div class="col" style="margin-left: -90px;"><input style="width: 140px;" class="button is-dark" type="submit" value="Search"></div>
+            </div>
+        </form>
+        %if objectType is not '':
+            <h1 class="title">Search Results:</h1>
+        %endif
+        <div class="row">
+        %if objectType == 'Prescriber':
+            <div class="col">
+                <table class="table table-hover" id="dev-table">
+                    <thead>
+                        <th></th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Credentials</th>
+                        <th>State</th>
+                        <th>Presciber Type</th>
+                        <th>Specialty</th>
+                        <th>Total Prescriptions</th>
+                        <th>Total Opioid Prescriptions</th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        %for p in pList:
+                        <tr>
+                            <td></td>
+                            <td>${ p.Fname }</td> 
+                            <td>${ p.Lname }</td>
+                            <td>${ p.Credentials }</td>
+                            <td>${ p.StateAbbrev }</td>
+                            <td>${ p.OpioidPrescriber}</td>
+                            <td>${ p.Specialty }</td>
+                            <td>${ p.TotalPrescription }</td>
+                            <td>${ p.AcetaminophinCodeine + p.Fentanyl + p.HydrocodoneAcetaminophen + p.OxycodoneAcetaminophen + p.Oxycontin}</td>
+                            <td><button class="btn">Edit</button> | <button class="btn">Delete</button></td>
+                            <td></td>
+                        </tr>
+                        %endfor
+                    </tbody> 
+                </table>
+            </div>  
+        %endif
+    </div>
 </%block>
