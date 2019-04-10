@@ -8,6 +8,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from account import models as amod
 from django.contrib.auth import models as pmod
+from django.db.models import Avg
 
 @view_function
 def process_request(request, prescriber:hmod.Prescriber):
@@ -34,6 +35,7 @@ def prescriberdetail(request, prescriberid:hmod.Prescriber):
     prescriber = hmod.Drugs_Details.objects.filter(PrescriberID=prescriberid).first()
     drugs = hmod.Drugs_Details.objects.order_by('-QtyPrescribed').filter(PrescriberID=prescriberid)
     group = request.user.groups.first()
+    
 
     context={
         'prescriber': prescriber,

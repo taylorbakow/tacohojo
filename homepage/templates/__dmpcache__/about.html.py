@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554753189.790694
+_modified_time = 1554863745.3950927
 _enable_loop = True
-_template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/about.html'
+_template_filename = 'C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/about.html'
 _template_uri = 'about.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -76,6 +76,6 @@ def render_site_center(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/about.html", "uri": "about.html", "source_encoding": "utf-8", "line_map": {"29": 0, "38": 1, "43": 3, "53": 3, "59": 3, "65": 5, "71": 5, "77": 71}}
+{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/about.html", "uri": "about.html", "source_encoding": "utf-8", "line_map": {"29": 0, "38": 1, "43": 3, "53": 3, "59": 3, "65": 5, "71": 5, "77": 71}}
 __M_END_METADATA
 """

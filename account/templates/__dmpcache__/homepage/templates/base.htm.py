@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554841512.1333847
+_modified_time = 1554866508.2657797
 _enable_loop = True
-_template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/base.htm'
+_template_filename = 'C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/base.htm'
 _template_uri = '/homepage/templates/base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -19,11 +19,10 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        request = context.get('request', UNDEFINED)
-        self = context.get('self', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        self = context.get('self', UNDEFINED)
         request = context.get('request', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n\r\n        <title>DMP</title>\r\n\r\n        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>\r\n        <script src="/django_mako_plus/dmp-common.min.js"></script>\r\n        ')
@@ -82,10 +81,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-<<<<<<< HEAD
-{"filename": "C:/Users/Think/tacohojo/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "28": 2, "29": 11, "30": 11, "31": 12, "32": 12, "33": 13, "34": 13, "35": 14, "36": 14, "37": 22, "38": 22, "39": 23, "40": 23, "41": 24, "42": 24, "43": 28, "44": 28, "45": 31, "46": 31, "47": 34, "48": 34, "49": 39, "50": 40, "51": 41, "52": 41, "53": 44, "54": 45, "55": 47, "56": 48, "57": 53, "58": 58, "59": 58, "64": 65, "70": 63, "76": 63, "82": 76}}
-=======
-{"filename": "C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "28": 2, "29": 11, "30": 11, "31": 12, "32": 12, "33": 13, "34": 13, "35": 14, "36": 14, "37": 22, "38": 22, "39": 23, "40": 23, "41": 24, "42": 24, "43": 28, "44": 28, "45": 31, "46": 31, "47": 34, "48": 34, "49": 39, "50": 40, "51": 41, "52": 41, "53": 44, "54": 45, "55": 47, "56": 48, "57": 53, "58": 58, "59": 58, "64": 65, "70": 63, "76": 63, "82": 76}}
->>>>>>> ecd57e65e86f6ffdb85daafe840d35c33d2f7f3c
+{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "28": 2, "29": 11, "30": 11, "31": 12, "32": 12, "33": 13, "34": 13, "35": 14, "36": 14, "37": 22, "38": 22, "39": 23, "40": 23, "41": 24, "42": 24, "43": 28, "44": 28, "45": 31, "46": 31, "47": 34, "48": 34, "49": 39, "50": 40, "51": 41, "52": 41, "53": 44, "54": 45, "55": 47, "56": 48, "57": 53, "58": 58, "59": 58, "64": 65, "70": 63, "76": 63, "82": 76}}
 __M_END_METADATA
 """
