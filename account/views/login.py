@@ -23,7 +23,7 @@ def process_request(request):
            login(request, user)
            return HttpResponseRedirect('/homepage/index', user)
         else:
-           raise forms.ValidationError("Invalid Credentials")
+           forms.ValidationError("Invalid Credentials")
     else:
         form = loginForm()
 
@@ -34,8 +34,8 @@ def process_request(request):
 
 
 class loginForm(forms.Form):
-   Username = forms.CharField(widget=forms.TextInput)
-   Password = forms.CharField(max_length=30, widget=forms.PasswordInput)
+   Username = forms.CharField(widget=forms.TextInput(attrs={'class' : 'control'}))
+   Password = forms.CharField(widget=forms.PasswordInput(attrs={'class' : 'control'}))
 
    def clean(self):
        user = authenticate(username=self.cleaned_data['Username'], password=self.cleaned_data['Password'])

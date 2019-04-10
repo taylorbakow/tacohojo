@@ -5,7 +5,11 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
+<<<<<<< HEAD
 _modified_time = 1554847105.672219
+=======
+_modified_time = 1554849581.2061498
+>>>>>>> ecd57e65e86f6ffdb85daafe840d35c33d2f7f3c
 _enable_loop = True
 _template_filename = 'C:/Users/Think/tacohojo/homepage/templates/drugdetail.html'
 _template_uri = 'drugdetail.html'
@@ -30,12 +34,20 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+<<<<<<< HEAD
         prescribers = context.get('prescribers', UNDEFINED)
+=======
+>>>>>>> ecd57e65e86f6ffdb85daafe840d35c33d2f7f3c
         self = context.get('self', UNDEFINED)
+        prescribers = context.get('prescribers', UNDEFINED)
+        drug = context.get('drug', UNDEFINED)
         def site_center():
             return render_site_center(context._locals(__M_locals))
         group = context.get('group', UNDEFINED)
+<<<<<<< HEAD
         drug = context.get('drug', UNDEFINED)
+=======
+>>>>>>> ecd57e65e86f6ffdb85daafe840d35c33d2f7f3c
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'site_center'):
@@ -50,12 +62,20 @@ def render_body(context,**pageargs):
 def render_site_center(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+<<<<<<< HEAD
         prescribers = context.get('prescribers', UNDEFINED)
+=======
+>>>>>>> ecd57e65e86f6ffdb85daafe840d35c33d2f7f3c
         self = context.get('self', UNDEFINED)
+        prescribers = context.get('prescribers', UNDEFINED)
+        drug = context.get('drug', UNDEFINED)
         def site_center():
             return render_site_center(context)
         group = context.get('group', UNDEFINED)
+<<<<<<< HEAD
         drug = context.get('drug', UNDEFINED)
+=======
+>>>>>>> ecd57e65e86f6ffdb85daafe840d35c33d2f7f3c
         __M_writer = context.writer()
         __M_writer('\r\n    <table class="table">\r\n        <thead>\r\n            <th></th>\r\n            <th>Drug Name</th>\r\n            <th>Is Opioids</th>\r\n            <th></th>\r\n        </thead>\r\n        <tbody>\r\n            <tr>\r\n                <td></td>\r\n                <td>')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( drug.DrugID.DrugName ))

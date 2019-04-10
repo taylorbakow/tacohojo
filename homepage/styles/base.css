@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     font-family: sans-serif;
     color: #777788;
+    height: 350px;
 }
 
 .clearfix {

@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554838814.1550624
+_modified_time = 1554849412.5442014
 _enable_loop = True
 _template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/base.htm'
 _template_uri = 'base.htm'
@@ -19,11 +19,11 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        request = context.get('request', UNDEFINED)
         self = context.get('self', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
+        request = context.get('request', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n\r\n        <title>DMP</title>\r\n\r\n        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>\r\n        <script src="/django_mako_plus/dmp-common.min.js"></script>\r\n        ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( django_mako_plus.links(self) ))
@@ -61,7 +61,7 @@ def render_body(context,**pageargs):
             context['self'].content(**pageargs)
         
 
-        __M_writer('\r\n        </main>\r\n\r\n        <footer style="text-align: center">\r\n            <h2>Footer</h2>\r\n        </footer>\r\n\r\n    </body>\r\n</html>\r\n')
+        __M_writer('\r\n        </main>\r\n\r\n        <footer style="text-align: center; margin-bottom: 10px;">\r\n            <h2>Footer</h2>\r\n        </footer>\r\n\r\n    </body>\r\n</html>\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
