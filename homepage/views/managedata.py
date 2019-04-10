@@ -37,6 +37,7 @@ class PrescriberForm(forms.Form):
 
 @view_function
 def create(request):
+
     return request.dmp.render('managedata.create.html')
 
 @view_function
@@ -54,17 +55,17 @@ def edit(request, pid):
     }
     return request.dmp.render('managedata.edit.html', context)
 
-""" class EditForm(forms.Form): 
-    Fname = forms.CharField()
-    Lname = forms.CharField()
-    Gender = forms.CharField(max_length=1)
-    Credentials = forms.CharField()
-    Specialty = forms.CharField()
-    OpioidPrescriber = forms.BooleanField()
-    StateAbbrev = forms.CharField(max_length=2)
-    TotalPrescription = forms.IntegerField()
-    AcetaminophinCodeine = forms.IntegerField(default=0)
-    Fentanyl = forms.IntegerField(default=0)
-    HydrocodoneAcetaminophen = forms.IntegerField(default=0)
-    OxycodoneAcetaminophen = forms.IntegerField(default=0)
-    Oxycontin = forms.IntegerField(default=0) """
+    # class EditForm(forms.Form): 
+    #     Fname = forms.CharField()
+    #     Lname = forms.CharField()
+    #     Gender = forms.CharField(max_length=1)
+    #     Credentials = forms.CharField()
+    #     Specialty = forms.CharField()
+    #     OpioidPrescriber = forms.BooleanField()
+    #     StateAbbrev = forms.CharField(max_length=2)
+    #     TotalPrescription = forms.IntegerField()
+    #     AcetaminophinCodeine = forms.IntegerField(default=0)
+    #     Fentanyl = forms.IntegerField(default=0)
+    #     HydrocodoneAcetaminophen = forms.IntegerField(default=0)
+    #     OxycodoneAcetaminophen = forms.IntegerField(default=0)
+    #     Oxycontin = forms.IntegerField(default=0) 
