@@ -8,8 +8,10 @@
             <th>State</th>
             <th>Presciber Type</th>
             <th>Specialty</th>
+            <th>Gender</th>
             <th>Total Prescriptions</th>
             <th>Total Opioid Prescriptions</th>
+            <th>% of prescriptions opioids</th>
             <th></th>
         </thead>
         <tbody>
@@ -29,12 +31,41 @@
                     %endif
                 </td>
                 <td>${ prescriber.PrescriberID.Specialty }</td>
+                <td>${ prescriber.PrescriberID.Gender }</td>
                 <td>${ prescriber.PrescriberID.TotalPrescription }</td>
                 <td>${ prescriber.PrescriberID.AcetaminophinCodeine + prescriber.PrescriberID.Fentanyl + prescriber.PrescriberID.HydrocodoneAcetaminophen + prescriber.PrescriberID.OxycodoneAcetaminophen + prescriber.PrescriberID.Oxycontin}</td>
+                <td>${ round(((prescriber.PrescriberID.AcetaminophinCodeine + prescriber.PrescriberID.Fentanyl + prescriber.PrescriberID.HydrocodoneAcetaminophen + prescriber.PrescriberID.OxycodoneAcetaminophen + prescriber.PrescriberID.Oxycontin)/prescriber.PrescriberID.TotalPrescription)*100,2)}%</td>
                 <td></td>
             </tr>
         </tbody> 
     </table>
+    <table class="table">
+        <thead>
+            <th></th>
+            <th>Drugs Prescribed by this Doctor</th>
+            <th>Is Opioid?</th>
+            <th># of Prescriptions</th>
+            <th>Avg Quantity for all Prescribers</th>
+            <th></th>
+        </thead>
+        <tbody>
+            %for p in drugs:
+            <tr>
+                <td></td>
+                <td><a href="/homepage/details.drugdetail/${ p.DrugID.id  }"> ${ p.DrugID.DrugName }</a></td>
+                <td>${ p.DrugID.IsOpioid }</td>
+                %if (p.QtyPrescribed) > (p.DrugID.AvgPerscribed):
+                <td style="color:red">${ p.QtyPrescribed }</td>
+                %else:
+                <td>${ p.QtyPrescribed }</td>
+                %endif
+                <td>${ p.DrugID.AvgPerscribed }</td>
+                <td></td>
+            </tr>
+            %endfor
+        </tbody> 
+    </table>
+
     <div class='tableauPlaceholder' id='viz1554849453936' style='position: relative'>
         <noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;In&#47;Intex_Opioids&#47;Howmanyofeachdrugs&#47;1_rss.png' style='border: none' /></a>
         </noscript>
