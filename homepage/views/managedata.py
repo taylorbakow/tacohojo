@@ -10,17 +10,15 @@ from account import models as amod
 from django.contrib.auth import models as pmod
 
 @view_function
-def process_request(request, prescriber:hmod.Prescriber):
-    return request.dmp.render('managedata.html')
+def process_request(request):
+    prescribers = hmod.Prescriber.objects.all()
 
-@view_function
-def create(request, pid:hmod.Prescriber):
-    return process_request(request)
+    context={
+        'prescribers': prescribers,
+    }
 
-@view_function
-def remove(request, pid:hmod.Prescriber):
-    return process_request(request)
+    return request.dmp.render('managedata.html', context)
 
-@view_function
-def edit(request, pid:hmod.Prescriber):
+view_function
+def create(request):
     return process_request(request)
