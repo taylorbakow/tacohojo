@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554866488.2199283
+_modified_time = 1554868449.2021296
 _enable_loop = True
-_template_filename = 'C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/index.html'
+_template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/index.html'
 _template_uri = 'index.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -30,16 +30,16 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        formP = context.get('formP', UNDEFINED)
-        pList = context.get('pList', UNDEFINED)
-        formD = context.get('formD', UNDEFINED)
         dList = context.get('dList', UNDEFINED)
-        group = context.get('group', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
-        ddList = context.get('ddList', UNDEFINED)
+        formD = context.get('formD', UNDEFINED)
         objectType = context.get('objectType', UNDEFINED)
+        pList = context.get('pList', UNDEFINED)
+        group = context.get('group', UNDEFINED)
+        ddList = context.get('ddList', UNDEFINED)
+        formP = context.get('formP', UNDEFINED)
+        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -55,16 +55,16 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        formP = context.get('formP', UNDEFINED)
-        pList = context.get('pList', UNDEFINED)
-        formD = context.get('formD', UNDEFINED)
         dList = context.get('dList', UNDEFINED)
-        group = context.get('group', UNDEFINED)
         def content():
             return render_content(context)
-        self = context.get('self', UNDEFINED)
-        ddList = context.get('ddList', UNDEFINED)
+        formD = context.get('formD', UNDEFINED)
         objectType = context.get('objectType', UNDEFINED)
+        pList = context.get('pList', UNDEFINED)
+        group = context.get('group', UNDEFINED)
+        ddList = context.get('ddList', UNDEFINED)
+        formP = context.get('formP', UNDEFINED)
+        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <div class="content">\r\n')
         if objectType is '':
@@ -134,6 +134,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "44": 1, "49": 75, "55": 3, "69": 3, "70": 5, "71": 6, "72": 8, "73": 11, "74": 12, "75": 12, "76": 12, "77": 13, "78": 14, "79": 14, "80": 14, "81": 15, "82": 16, "83": 16, "84": 16, "85": 18, "86": 18, "87": 18, "88": 22, "89": 23, "90": 25, "91": 26, "92": 27, "93": 32, "94": 33, "95": 34, "96": 34, "97": 34, "98": 34, "99": 34, "100": 34, "101": 37, "102": 40, "103": 41, "104": 46, "105": 47, "106": 48, "107": 48, "108": 48, "109": 48, "110": 51, "111": 54, "112": 55, "113": 56, "114": 64, "115": 65, "116": 66, "117": 66, "118": 66, "119": 66, "120": 67, "121": 67, "122": 67, "123": 67, "124": 67, "125": 67, "126": 68, "127": 68, "128": 71, "129": 73, "135": 129}}
+{"filename": "C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "44": 1, "49": 75, "55": 3, "69": 3, "70": 5, "71": 6, "72": 8, "73": 11, "74": 12, "75": 12, "76": 12, "77": 13, "78": 14, "79": 14, "80": 14, "81": 15, "82": 16, "83": 16, "84": 16, "85": 18, "86": 18, "87": 18, "88": 22, "89": 23, "90": 25, "91": 26, "92": 27, "93": 32, "94": 33, "95": 34, "96": 34, "97": 34, "98": 34, "99": 34, "100": 34, "101": 37, "102": 40, "103": 41, "104": 46, "105": 47, "106": 48, "107": 48, "108": 48, "109": 48, "110": 51, "111": 54, "112": 55, "113": 56, "114": 64, "115": 65, "116": 66, "117": 66, "118": 66, "119": 66, "120": 67, "121": 67, "122": 67, "123": 67, "124": 67, "125": 67, "126": 68, "127": 68, "128": 71, "129": 73, "135": 129}}
 __M_END_METADATA
 """
