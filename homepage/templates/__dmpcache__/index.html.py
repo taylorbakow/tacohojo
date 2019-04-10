@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554866488.2199283
+_modified_time = 1554917383.3654466
 _enable_loop = True
 _template_filename = 'C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/index.html'
 _template_uri = 'index.html'
@@ -30,16 +30,17 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        formP = context.get('formP', UNDEFINED)
-        pList = context.get('pList', UNDEFINED)
-        formD = context.get('formD', UNDEFINED)
-        dList = context.get('dList', UNDEFINED)
-        group = context.get('group', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
+        pList = context.get('pList', UNDEFINED)
         self = context.get('self', UNDEFINED)
         ddList = context.get('ddList', UNDEFINED)
+        request = context.get('request', UNDEFINED)
+        group = context.get('group', UNDEFINED)
+        dList = context.get('dList', UNDEFINED)
         objectType = context.get('objectType', UNDEFINED)
+        formP = context.get('formP', UNDEFINED)
+        formD = context.get('formD', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -55,21 +56,28 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        formP = context.get('formP', UNDEFINED)
-        pList = context.get('pList', UNDEFINED)
-        formD = context.get('formD', UNDEFINED)
-        dList = context.get('dList', UNDEFINED)
-        group = context.get('group', UNDEFINED)
         def content():
             return render_content(context)
+        pList = context.get('pList', UNDEFINED)
         self = context.get('self', UNDEFINED)
         ddList = context.get('ddList', UNDEFINED)
+        request = context.get('request', UNDEFINED)
+        group = context.get('group', UNDEFINED)
+        dList = context.get('dList', UNDEFINED)
         objectType = context.get('objectType', UNDEFINED)
+        formP = context.get('formP', UNDEFINED)
+        formD = context.get('formD', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <div class="content">\r\n')
         if objectType is '':
-            __M_writer("            <p>I don't think anybody knows it was Russia that wrote Lorem Ipsum, but I don't know, maybe it was. It could be Russia, but it could also be China. It could also be lots of other people. It also could be some wordsmith sitting on their bed that weights 400 pounds. Ok?</p>\r\n")
-        __M_writer('        <div class="grid" style="margin-top: 30px;">\r\n            <form method="post">\r\n                <div class="row" style="width: 95%;">\r\n')
+            __M_writer("            <p>I don't think anybody knows it was Russia that wrote Tacohojo, but I don't know, maybe it was. It could be Russia, but it could also be China. It could also be lots of other people. It also could be some wordsmith sitting on their bed that weights 400 pounds. Ok?</p>\r\n")
+        __M_writer('        <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">\r\n            <div class="modal-dialog" role="document">\r\n                <div class="modal-content">\r\n                    <div class="modal-header text-center">\r\n                    <h4 class="modal-title w-100 font-weight-bold">Write to us</h4>\r\n                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">\r\n                        <span aria-hidden="true">&times;</span>\r\n                    </button>\r\n                    </div>\r\n                    <div class="modal-body mx-3">\r\n                    <div class="md-form mb-5">\r\n                        <label data-error="wrong" data-success="right" for="form34">Your name</label>\r\n                        <input type="text" id="form34" class="form-control validate" value="')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( request.user.first_name ))
+        __M_writer(' ')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( request.user.last_name ))
+        __M_writer('">\r\n                    </div>\r\n        \r\n                    <div class="md-form mb-5">\r\n                        <label data-error="wrong" data-success="right" for="form29">Your email</label>\r\n                        <input type="email" id="form29" class="form-control validate" value="')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( request.user.email ))
+        __M_writer('">\r\n                    </div>\r\n        \r\n                    <div class="md-form mb-5">\r\n                        <label data-error="wrong" data-success="right" for="form32">Subject</label>\r\n                        <input type="text" id="form32" class="form-control validate">\r\n                    </div>\r\n        \r\n                    <div class="md-form">\r\n                        <label data-error="wrong" data-success="right" for="form8">Your message</label>\r\n                        <textarea type="text" id="form8" class="md-textarea form-control" rows="4"></textarea>\r\n                    </div>\r\n        \r\n                    </div>\r\n                    <div class="modal-footer d-flex justify-content-center">\r\n                    <button class="btn btn-primary">Send</button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            </div>\r\n        \r\n            <div class="text-center">\r\n            <a href="" class="btn btn-default btn-rounded mb-4 btn-reqest" data-toggle="modal" data-target="#modalContactForm" style="border: solid;">Request More Features</a>\r\n            </div>\r\n        <div class="grid" style="margin-top: 30px;">\r\n            <form method="post">\r\n                <div class="row" style="width: 95%;">\r\n')
         if group.name == 'Health Officials':
             __M_writer('                    <div class="col"> ')
             __M_writer(django_mako_plus.ExpressionPostProcessor(self)( formP ))
@@ -134,6 +142,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "44": 1, "49": 75, "55": 3, "69": 3, "70": 5, "71": 6, "72": 8, "73": 11, "74": 12, "75": 12, "76": 12, "77": 13, "78": 14, "79": 14, "80": 14, "81": 15, "82": 16, "83": 16, "84": 16, "85": 18, "86": 18, "87": 18, "88": 22, "89": 23, "90": 25, "91": 26, "92": 27, "93": 32, "94": 33, "95": 34, "96": 34, "97": 34, "98": 34, "99": 34, "100": 34, "101": 37, "102": 40, "103": 41, "104": 46, "105": 47, "106": 48, "107": 48, "108": 48, "109": 48, "110": 51, "111": 54, "112": 55, "113": 56, "114": 64, "115": 65, "116": 66, "117": 66, "118": 66, "119": 66, "120": 67, "121": 67, "122": 67, "123": 67, "124": 67, "125": 67, "126": 68, "127": 68, "128": 71, "129": 73, "135": 129}}
+{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "45": 1, "50": 116, "56": 3, "71": 3, "72": 5, "73": 6, "74": 8, "75": 20, "76": 20, "77": 20, "78": 20, "79": 25, "80": 25, "81": 52, "82": 53, "83": 53, "84": 53, "85": 54, "86": 55, "87": 55, "88": 55, "89": 56, "90": 57, "91": 57, "92": 57, "93": 59, "94": 59, "95": 59, "96": 63, "97": 64, "98": 66, "99": 67, "100": 68, "101": 73, "102": 74, "103": 75, "104": 75, "105": 75, "106": 75, "107": 75, "108": 75, "109": 78, "110": 81, "111": 82, "112": 87, "113": 88, "114": 89, "115": 89, "116": 89, "117": 89, "118": 92, "119": 95, "120": 96, "121": 97, "122": 105, "123": 106, "124": 107, "125": 107, "126": 107, "127": 107, "128": 108, "129": 108, "130": 108, "131": 108, "132": 108, "133": 108, "134": 109, "135": 109, "136": 112, "137": 114, "143": 137}}
 __M_END_METADATA
 """
