@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554847673.004191
+_modified_time = 1554929935.8625636
 _enable_loop = True
-_template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/account/templates/login.html'
+_template_filename = 'C:/Users/Think/tacohojo/account/templates/login.html'
 _template_uri = 'login.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -30,13 +30,13 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def content():
-            return render_content(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        form = context.get('form', UNDEFINED)
         def title():
             return render_title(context._locals(__M_locals))
+        self = context.get('self', UNDEFINED)
+        def content():
+            return render_content(context._locals(__M_locals))
+        form = context.get('form', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
@@ -72,8 +72,8 @@ def render_content(context,**pageargs):
         def content():
             return render_content(context)
         self = context.get('self', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         form = context.get('form', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('   \r\n\r\n<div class="wrapper fadeInDown">\r\n  <div id="formContent">\r\n    <div class="fadeIn first">\r\n      <img src="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
@@ -87,6 +87,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Taylo/github/tacohojo/tacohojo/account/templates/login.html", "uri": "login.html", "source_encoding": "utf-8", "line_map": {"29": 0, "41": 1, "46": 3, "51": 18, "57": 3, "63": 3, "69": 5, "78": 5, "79": 10, "80": 10, "81": 13, "82": 13, "88": 82}}
+{"filename": "C:/Users/Think/tacohojo/account/templates/login.html", "uri": "login.html", "source_encoding": "utf-8", "line_map": {"29": 0, "41": 1, "46": 3, "51": 18, "57": 3, "63": 3, "69": 5, "78": 5, "79": 10, "80": 10, "81": 13, "82": 13, "88": 82}}
 __M_END_METADATA
 """
