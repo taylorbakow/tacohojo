@@ -8,7 +8,13 @@
         <div class="grid" style="margin-top: 30px;">
             <form method="post">
                 <div class="row" style="width: 95%;">
+                    %if group.name == 'Health Officials':
                     <div class="col"> ${ formP } </div>
+                    %elif group.name == 'Data Clerks':
+                    <div class="col"> ${ formP } </div>
+                    %elif group.name == 'Prescribers':
+                    <div class="col"><div hidden> ${ formP } </div></div>
+                    %endif
                     <div class="col"> ${ formD } </div>
                     <div class="col" style="margin-left: -90px;"><input style="width: 140px;" class="button is-dark" type="submit" value="Search"></div>
                 </div>

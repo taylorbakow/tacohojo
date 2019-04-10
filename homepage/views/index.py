@@ -47,13 +47,15 @@ def process_request(request):
         else:
             pass
 
+        group = request.user.groups.first()
         context = {
             'formP': formP,
             'formD': formD,
             'pList': pList,
             'dList': dList,
             'objectType': objectType,
-            'ddList': ddList
+            'ddList': ddList,
+            'group': group
         }
         return request.dmp.render('index.html', context)
     else:
