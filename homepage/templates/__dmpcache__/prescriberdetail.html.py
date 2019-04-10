@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554880587.007693
+_modified_time = 1554917129.6907566
 _enable_loop = True
 _template_filename = 'C:/Users/Think/tacohojo/homepage/templates/prescriberdetail.html'
 _template_uri = 'prescriberdetail.html'
@@ -30,12 +30,13 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        group = context.get('group', UNDEFINED)
-        self = context.get('self', UNDEFINED)
         def site_center():
             return render_site_center(context._locals(__M_locals))
-        drugs = context.get('drugs', UNDEFINED)
+        self = context.get('self', UNDEFINED)
+        round = context.get('round', UNDEFINED)
         prescriber = context.get('prescriber', UNDEFINED)
+        group = context.get('group', UNDEFINED)
+        drugs = context.get('drugs', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'site_center'):
@@ -50,14 +51,15 @@ def render_body(context,**pageargs):
 def render_site_center(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        group = context.get('group', UNDEFINED)
-        self = context.get('self', UNDEFINED)
         def site_center():
             return render_site_center(context)
-        drugs = context.get('drugs', UNDEFINED)
+        self = context.get('self', UNDEFINED)
+        round = context.get('round', UNDEFINED)
         prescriber = context.get('prescriber', UNDEFINED)
+        group = context.get('group', UNDEFINED)
+        drugs = context.get('drugs', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\r\n    <table class="table">\r\n        <thead>\r\n            <th></th>\r\n            <th>Prescriber Name</th>\r\n            <th>State</th>\r\n            <th>Presciber Type</th>\r\n            <th>Specialty</th>\r\n            <th>Gender</th>\r\n            <th>Total Prescriptions</th>\r\n            <th>Total Opioid Prescriptions</th>\r\n            <th></th>\r\n        </thead>\r\n        <tbody>\r\n            <tr>\r\n                <td></td>\r\n')
+        __M_writer('\r\n    <table class="table">\r\n        <thead>\r\n            <th></th>\r\n            <th>Prescriber Name</th>\r\n            <th>State</th>\r\n            <th>Presciber Type</th>\r\n            <th>Specialty</th>\r\n            <th>Gender</th>\r\n            <th>Total Prescriptions</th>\r\n            <th>Total Opioid Prescriptions</th>\r\n            <th>% of prescriptions opioids</th>\r\n            <th></th>\r\n        </thead>\r\n        <tbody>\r\n            <tr>\r\n                <td></td>\r\n')
         if group.name == 'Health Officials':
             __M_writer('                <td>')
             __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.Fname ))
@@ -95,7 +97,9 @@ def render_site_center(context,**pageargs):
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.TotalPrescription ))
         __M_writer('</td>\r\n                <td>')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( prescriber.PrescriberID.AcetaminophinCodeine + prescriber.PrescriberID.Fentanyl + prescriber.PrescriberID.HydrocodoneAcetaminophen + prescriber.PrescriberID.OxycodoneAcetaminophen + prescriber.PrescriberID.Oxycontin))
-        __M_writer('</td>\r\n                <td></td>\r\n            </tr>\r\n        </tbody> \r\n    </table>\r\n    <table class="table">\r\n        <thead>\r\n            <th></th>\r\n            <th>Drugs Prescribed by this Doctor</th>\r\n            <th>Is Opioid?</th>\r\n            <th># of Prescriptions</th>\r\n            <th>Avg Quantity for all Prescribers</th>\r\n            <th></th>\r\n        </thead>\r\n        <tbody>\r\n')
+        __M_writer('</td>\r\n                <td>')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)( round(((prescriber.PrescriberID.AcetaminophinCodeine + prescriber.PrescriberID.Fentanyl + prescriber.PrescriberID.HydrocodoneAcetaminophen + prescriber.PrescriberID.OxycodoneAcetaminophen + prescriber.PrescriberID.Oxycontin)/prescriber.PrescriberID.TotalPrescription)*100,2)))
+        __M_writer('%</td>\r\n                <td></td>\r\n            </tr>\r\n        </tbody> \r\n    </table>\r\n    <table class="table">\r\n        <thead>\r\n            <th></th>\r\n            <th>Drugs Prescribed by this Doctor</th>\r\n            <th>Is Opioid?</th>\r\n            <th># of Prescriptions</th>\r\n            <th>Avg Quantity for all Prescribers</th>\r\n            <th></th>\r\n        </thead>\r\n        <tbody>\r\n')
         for p in drugs:
             __M_writer('            <tr>\r\n                <td></td>\r\n                <td><a href="/homepage/details.drugdetail/')
             __M_writer(django_mako_plus.ExpressionPostProcessor(self)( p.DrugID.id  ))
@@ -127,6 +131,6 @@ def render_site_center(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Think/tacohojo/homepage/templates/prescriberdetail.html", "uri": "prescriberdetail.html", "source_encoding": "utf-8", "line_map": {"29": 0, "40": 1, "50": 3, "60": 3, "61": 19, "62": 20, "63": 20, "64": 20, "65": 20, "66": 20, "67": 20, "68": 20, "69": 21, "70": 22, "71": 22, "72": 22, "73": 22, "74": 22, "75": 22, "76": 22, "77": 23, "78": 24, "79": 24, "80": 24, "81": 24, "82": 24, "83": 26, "84": 26, "85": 26, "86": 28, "87": 29, "88": 30, "89": 31, "90": 33, "91": 34, "92": 34, "93": 35, "94": 35, "95": 36, "96": 36, "97": 37, "98": 37, "99": 52, "100": 53, "101": 55, "102": 55, "103": 55, "104": 55, "105": 56, "106": 56, "107": 57, "108": 58, "109": 58, "110": 58, "111": 59, "112": 60, "113": 60, "114": 60, "115": 62, "116": 62, "117": 62, "118": 66, "119": 120, "120": 120, "121": 131, "122": 131, "128": 122}}
+{"filename": "C:/Users/Think/tacohojo/homepage/templates/prescriberdetail.html", "uri": "prescriberdetail.html", "source_encoding": "utf-8", "line_map": {"29": 0, "41": 1, "51": 3, "62": 3, "63": 20, "64": 21, "65": 21, "66": 21, "67": 21, "68": 21, "69": 21, "70": 21, "71": 22, "72": 23, "73": 23, "74": 23, "75": 23, "76": 23, "77": 23, "78": 23, "79": 24, "80": 25, "81": 25, "82": 25, "83": 25, "84": 25, "85": 27, "86": 27, "87": 27, "88": 29, "89": 30, "90": 31, "91": 32, "92": 34, "93": 35, "94": 35, "95": 36, "96": 36, "97": 37, "98": 37, "99": 38, "100": 38, "101": 39, "102": 39, "103": 54, "104": 55, "105": 57, "106": 57, "107": 57, "108": 57, "109": 58, "110": 58, "111": 59, "112": 60, "113": 60, "114": 60, "115": 61, "116": 62, "117": 62, "118": 62, "119": 64, "120": 64, "121": 64, "122": 68, "123": 122, "124": 122, "125": 133, "126": 133, "132": 126}}
 __M_END_METADATA
 """

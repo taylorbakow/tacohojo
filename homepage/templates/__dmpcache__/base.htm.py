@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554863745.4244354
+_modified_time = 1554917611.4956288
 _enable_loop = True
-_template_filename = 'C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/base.htm'
+_template_filename = 'C:/Users/Think/tacohojo/homepage/templates/base.htm'
 _template_uri = 'base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -15,15 +15,17 @@ import django.utils.html
 _exports = ['content']
 
 
+from datetime import datetime
+
 def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        self = context.get('self', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        request = context.get('request', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
+        request = context.get('request', UNDEFINED)
+        self = context.get('self', UNDEFINED)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n\r\n        <title>DMP</title>\r\n\r\n        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>\r\n        <script src="/django_mako_plus/dmp-common.min.js"></script>\r\n        ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( django_mako_plus.links(self) ))
@@ -61,7 +63,10 @@ def render_body(context,**pageargs):
             context['self'].content(**pageargs)
         
 
-        __M_writer('\r\n        </main>\r\n\r\n        <footer style="text-align: center; margin-bottom: 10px;">\r\n            <h2>Footer</h2>\r\n        </footer>\r\n\r\n    </body>\r\n</html>\r\n')
+        __M_writer('\r\n        </main>\r\n        <footer>\r\n            ')
+        __M_writer('\r\n            <div class="center" style="text-align:center">© Copyright Tacohojo Consulting ')
+        __M_writer(django_mako_plus.ExpressionPostProcessor(self)(datetime.today().strftime("%Y")))
+        __M_writer('. All rights reserved</div>\r\n            <div class="center" style="text-align:center">______________________</div>\r\n            \r\n        </footer>\r\n\r\n    </body>\r\n</html>\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -73,7 +78,7 @@ def render_content(context,**pageargs):
         def content():
             return render_content(context)
         __M_writer = context.writer()
-        __M_writer('\r\n                Site content goes here in sub-templates.\r\n            ')
+        __M_writer('\r\n            \r\n            ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -81,6 +86,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "28": 2, "29": 11, "30": 11, "31": 12, "32": 12, "33": 13, "34": 13, "35": 14, "36": 14, "37": 22, "38": 22, "39": 23, "40": 23, "41": 24, "42": 24, "43": 28, "44": 28, "45": 31, "46": 31, "47": 34, "48": 34, "49": 39, "50": 40, "51": 41, "52": 41, "53": 44, "54": 45, "55": 47, "56": 48, "57": 53, "58": 58, "59": 58, "64": 65, "70": 63, "76": 63, "82": 76}}
+{"filename": "C:/Users/Think/tacohojo/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 68, "20": 0, "30": 2, "31": 11, "32": 11, "33": 12, "34": 12, "35": 13, "36": 13, "37": 14, "38": 14, "39": 22, "40": 22, "41": 23, "42": 23, "43": 24, "44": 24, "45": 28, "46": 28, "47": 31, "48": 31, "49": 34, "50": 34, "51": 39, "52": 40, "53": 41, "54": 41, "55": 44, "56": 45, "57": 47, "58": 48, "59": 53, "60": 58, "61": 58, "66": 65, "67": 68, "68": 69, "69": 69, "75": 63, "81": 63, "87": 81}}
 __M_END_METADATA
 """

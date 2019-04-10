@@ -11,6 +11,7 @@
             <th>Gender</th>
             <th>Total Prescriptions</th>
             <th>Total Opioid Prescriptions</th>
+            <th>% of prescriptions opioids</th>
             <th></th>
         </thead>
         <tbody>
@@ -35,6 +36,7 @@
                 <td>${ prescriber.PrescriberID.Gender }</td>
                 <td>${ prescriber.PrescriberID.TotalPrescription }</td>
                 <td>${ prescriber.PrescriberID.AcetaminophinCodeine + prescriber.PrescriberID.Fentanyl + prescriber.PrescriberID.HydrocodoneAcetaminophen + prescriber.PrescriberID.OxycodoneAcetaminophen + prescriber.PrescriberID.Oxycontin}</td>
+                <td>${ round(((prescriber.PrescriberID.AcetaminophinCodeine + prescriber.PrescriberID.Fentanyl + prescriber.PrescriberID.HydrocodoneAcetaminophen + prescriber.PrescriberID.OxycodoneAcetaminophen + prescriber.PrescriberID.Oxycontin)/prescriber.PrescriberID.TotalPrescription)*100,2)}%</td>
                 <td></td>
             </tr>
         </tbody> 
