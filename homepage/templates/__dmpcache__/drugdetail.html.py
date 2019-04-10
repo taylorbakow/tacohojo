@@ -56,6 +56,7 @@ def render_site_center(context,**pageargs):
         def site_center():
             return render_site_center(context)
         group = context.get('group', UNDEFINED)
+        __M_writer = context.writer()
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( drug.DrugID.IsOpioid ))
         __M_writer('</td>\r\n                <td></td>\r\n            </tr>\r\n        </tbody> \r\n    </table>\r\n    <table class="table">\r\n        <thead>\r\n            <th></th>\r\n            <th>Top 10 Prescribers</th>\r\n            <th>Gender</th>\r\n            <th># Prescribed</th>\r\n            <th></th>\r\n        </thead>\r\n        <tbody>\r\n')
         for p in prescribers:
