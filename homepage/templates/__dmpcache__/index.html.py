@@ -5,15 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-<<<<<<< HEAD
-_modified_time = 1554915615.2337675
-_enable_loop = True
-_template_filename = 'C:/Users/Think/tacohojo/homepage/templates/index.html'
-=======
-_modified_time = 1554924150.508464
+_modified_time = 1554928524.2035918
 _enable_loop = True
 _template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/index.html'
->>>>>>> 6dca431b713802861c3b153dec4518210bb7c5e3
 _template_uri = 'index.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -36,29 +30,16 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-<<<<<<< HEAD
-        ddList = context.get('ddList', UNDEFINED)
-        self = context.get('self', UNDEFINED)
-        def content():
-            return render_content(context._locals(__M_locals))
+        dList = context.get('dList', UNDEFINED)
         objectType = context.get('objectType', UNDEFINED)
         formP = context.get('formP', UNDEFINED)
-        group = context.get('group', UNDEFINED)
         formD = context.get('formD', UNDEFINED)
-        dList = context.get('dList', UNDEFINED)
-        pList = context.get('pList', UNDEFINED)
-=======
-        def content():
-            return render_content(context._locals(__M_locals))
-        formP = context.get('formP', UNDEFINED)
-        dList = context.get('dList', UNDEFINED)
         ddList = context.get('ddList', UNDEFINED)
-        objectType = context.get('objectType', UNDEFINED)
-        pList = context.get('pList', UNDEFINED)
         request = context.get('request', UNDEFINED)
+        def content():
+            return render_content(context._locals(__M_locals))
         self = context.get('self', UNDEFINED)
-        formD = context.get('formD', UNDEFINED)
->>>>>>> 6dca431b713802861c3b153dec4518210bb7c5e3
+        pList = context.get('pList', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -74,29 +55,16 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-<<<<<<< HEAD
-        ddList = context.get('ddList', UNDEFINED)
-        self = context.get('self', UNDEFINED)
-        def content():
-            return render_content(context)
+        dList = context.get('dList', UNDEFINED)
         objectType = context.get('objectType', UNDEFINED)
         formP = context.get('formP', UNDEFINED)
-        group = context.get('group', UNDEFINED)
         formD = context.get('formD', UNDEFINED)
-        dList = context.get('dList', UNDEFINED)
-        pList = context.get('pList', UNDEFINED)
-=======
-        def content():
-            return render_content(context)
-        formP = context.get('formP', UNDEFINED)
-        dList = context.get('dList', UNDEFINED)
         ddList = context.get('ddList', UNDEFINED)
-        objectType = context.get('objectType', UNDEFINED)
-        pList = context.get('pList', UNDEFINED)
         request = context.get('request', UNDEFINED)
+        def content():
+            return render_content(context)
         self = context.get('self', UNDEFINED)
-        formD = context.get('formD', UNDEFINED)
->>>>>>> 6dca431b713802861c3b153dec4518210bb7c5e3
+        pList = context.get('pList', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n    <div class="content">\r\n')
         if objectType is '':
@@ -160,7 +128,9 @@ def render_content(context,**pageargs):
                 __M_writer(django_mako_plus.ExpressionPostProcessor(self)(dd.QtyPrescribed))
                 __M_writer('</td>         \r\n                    </tr>\r\n')
             __M_writer('                </table>\r\n')
-        __M_writer('        </div>\r\n    </div>\r\n    <div style="width:50%">\r\n        <div class=\'tableauPlaceholder\' id=\'viz1554912356982\' >\r\n                <noscript>\r\n                    <a href=\'#\'><img alt=\' \' src=\'https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;CZ&#47;CZF5B7Q2Q&#47;1_rss.png\' style=\'border: none\' /></a>\r\n                </noscript>\r\n                <object class=\'tableauViz\'  style=\'display:inline-block;\'>\r\n                    <param name=\'host_url\' value=\'https%3A%2F%2Fpublic.tableau.com%2F\' /> \r\n                    <param name=\'embed_code_version\' value=\'3\' /> \r\n                    <param name=\'path\' value=\'shared&#47;CZF5B7Q2Q\' /> \r\n                    <param name=\'toolbar\' value=\'no\' />\r\n                    <param name=\'static_image\' value=\'https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;CZ&#47;CZF5B7Q2Q&#47;1.png\' /> \r\n                    <param name=\'animate_transition\' value=\'yes\' />\r\n                    <param name=\'display_static_image\' value=\'yes\' />\r\n                    <param name=\'display_spinner\' value=\'yes\' /><param name=\'display_overlay\' value=\'yes\' />\r\n                    <param name=\'display_count\' value=\'yes\' /><param name=\'filter\' value=\'publish=yes\' />\r\n                </object>\r\n        </div>                \r\n            <script type=\'text/javascript\'>                    \r\n                var divElement = document.getElementById(\'viz1554912356982\');                    \r\n                var vizElement = divElement.getElementsByTagName(\'object\')[0];                    \r\n                vizElement.style.width=\'500px\';vizElement.style.height=\'400px\';                    \r\n                var scriptElement = document.createElement(\'script\');                    \r\n                scriptElement.src = \'https://public.tableau.com/javascripts/api/viz_v1.js\';                    \r\n                vizElement.parentNode.insertBefore(scriptElement, vizElement);                \r\n            </script>\r\n    </div>\r\n')
+        __M_writer('        </div>\r\n    </div>\r\n')
+        if objectType is '':
+            __M_writer('        <div style="width:50%">\r\n            <div class=\'tableauPlaceholder\' id=\'viz1554912356982\' >\r\n                    <noscript>\r\n                        <a href=\'#\'><img alt=\' \' src=\'https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;CZ&#47;CZF5B7Q2Q&#47;1_rss.png\' style=\'border: none\' /></a>\r\n                    </noscript>\r\n                    <object class=\'tableauViz\'  style=\'display:inline-block;\'>\r\n                        <param name=\'host_url\' value=\'https%3A%2F%2Fpublic.tableau.com%2F\' /> \r\n                        <param name=\'embed_code_version\' value=\'3\' /> \r\n                        <param name=\'path\' value=\'shared&#47;CZF5B7Q2Q\' /> \r\n                        <param name=\'toolbar\' value=\'no\' />\r\n                        <param name=\'static_image\' value=\'https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;CZ&#47;CZF5B7Q2Q&#47;1.png\' /> \r\n                        <param name=\'animate_transition\' value=\'yes\' />\r\n                        <param name=\'display_static_image\' value=\'yes\' />\r\n                        <param name=\'display_spinner\' value=\'yes\' /><param name=\'display_overlay\' value=\'yes\' />\r\n                        <param name=\'display_count\' value=\'yes\' /><param name=\'filter\' value=\'publish=yes\' />\r\n                    </object>\r\n            </div>                \r\n                <script type=\'text/javascript\'>                    \r\n                    var divElement = document.getElementById(\'viz1554912356982\');                    \r\n                    var vizElement = divElement.getElementsByTagName(\'object\')[0];                    \r\n                    vizElement.style.width=\'500px\';vizElement.style.height=\'400px\';                    \r\n                    var scriptElement = document.createElement(\'script\');                    \r\n                    scriptElement.src = \'https://public.tableau.com/javascripts/api/viz_v1.js\';                    \r\n                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                \r\n                </script>\r\n        </div>\r\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -168,14 +138,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-<<<<<<< HEAD
-{"filename": "C:/Users/Think/tacohojo/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "44": 1, "49": 101, "55": 3, "69": 3, "70": 5, "71": 6, "72": 8, "73": 11, "74": 12, "75": 12, "76": 12, "77": 13, "78": 14, "79": 14, "80": 14, "81": 15, "82": 16, "83": 16, "84": 16, "85": 18, "86": 18, "87": 18, "88": 22, "89": 23, "90": 25, "91": 26, "92": 27, "93": 32, "94": 33, "95": 34, "96": 34, "97": 34, "98": 34, "99": 34, "100": 34, "101": 37, "102": 40, "103": 41, "104": 46, "105": 47, "106": 48, "107": 48, "108": 48, "109": 48, "110": 51, "111": 54, "112": 55, "113": 56, "114": 64, "115": 65, "116": 66, "117": 66, "118": 66, "119": 66, "120": 67, "121": 67, "122": 67, "123": 67, "124": 67, "125": 67, "126": 68, "127": 68, "128": 71, "129": 73, "135": 129}}
-=======
-<<<<<<< HEAD
-{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "44": 1, "49": 114, "55": 3, "69": 3, "70": 5, "71": 6, "72": 8, "73": 20, "74": 20, "75": 20, "76": 20, "77": 25, "78": 25, "79": 52, "80": 53, "81": 53, "82": 53, "83": 54, "84": 55, "85": 55, "86": 55, "87": 57, "88": 57, "89": 57, "90": 61, "91": 62, "92": 64, "93": 65, "94": 66, "95": 71, "96": 72, "97": 73, "98": 73, "99": 73, "100": 73, "101": 73, "102": 73, "103": 76, "104": 79, "105": 80, "106": 85, "107": 86, "108": 87, "109": 87, "110": 87, "111": 87, "112": 90, "113": 93, "114": 94, "115": 95, "116": 103, "117": 104, "118": 105, "119": 105, "120": 105, "121": 105, "122": 106, "123": 106, "124": 106, "125": 106, "126": 106, "127": 106, "128": 107, "129": 107, "130": 110, "131": 112, "137": 131}}
-=======
-{"filename": "C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "44": 1, "49": 75, "55": 3, "69": 3, "70": 5, "71": 6, "72": 8, "73": 11, "74": 12, "75": 12, "76": 12, "77": 13, "78": 14, "79": 14, "80": 14, "81": 15, "82": 16, "83": 16, "84": 16, "85": 18, "86": 18, "87": 18, "88": 22, "89": 23, "90": 25, "91": 26, "92": 27, "93": 32, "94": 33, "95": 34, "96": 34, "97": 34, "98": 34, "99": 34, "100": 34, "101": 37, "102": 40, "103": 41, "104": 46, "105": 47, "106": 48, "107": 48, "108": 48, "109": 48, "110": 51, "111": 54, "112": 55, "113": 56, "114": 64, "115": 65, "116": 66, "117": 66, "118": 66, "119": 66, "120": 67, "121": 67, "122": 67, "123": 67, "124": 67, "125": 67, "126": 68, "127": 68, "128": 71, "129": 73, "135": 129}}
->>>>>>> e1a860caef6e6dca1b4c777da202601aa699ef88
->>>>>>> 6dca431b713802861c3b153dec4518210bb7c5e3
+{"filename": "C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"29": 0, "44": 1, "49": 142, "55": 3, "69": 3, "70": 5, "71": 6, "72": 8, "73": 20, "74": 20, "75": 20, "76": 20, "77": 25, "78": 25, "79": 52, "80": 53, "81": 53, "82": 53, "83": 54, "84": 55, "85": 55, "86": 55, "87": 57, "88": 57, "89": 57, "90": 61, "91": 62, "92": 64, "93": 65, "94": 66, "95": 71, "96": 72, "97": 73, "98": 73, "99": 73, "100": 73, "101": 73, "102": 73, "103": 76, "104": 79, "105": 80, "106": 85, "107": 86, "108": 87, "109": 87, "110": 87, "111": 87, "112": 90, "113": 93, "114": 94, "115": 95, "116": 103, "117": 104, "118": 105, "119": 105, "120": 105, "121": 105, "122": 106, "123": 106, "124": 106, "125": 106, "126": 106, "127": 106, "128": 107, "129": 107, "130": 110, "131": 112, "132": 114, "133": 115, "139": 133}}
 __M_END_METADATA
 """
