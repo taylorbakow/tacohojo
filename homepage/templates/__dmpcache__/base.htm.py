@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554924602.5021808
+_modified_time = 1554939578.1982274
 _enable_loop = True
-_template_filename = 'C:/Users/Think/tacohojo/homepage/templates/base.htm'
+_template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/base.htm'
 _template_uri = 'base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -21,11 +21,11 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        request = context.get('request', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
         self = context.get('self', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n\r\n        <title>DMP</title>\r\n\r\n        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>\r\n        <script src="/django_mako_plus/dmp-common.min.js"></script>\r\n        ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( django_mako_plus.links(self) ))
@@ -95,6 +95,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "28": 2, "29": 11, "30": 11, "31": 12, "32": 12, "33": 13, "34": 13, "35": 14, "36": 14, "37": 17, "38": 17, "39": 18, "40": 18, "41": 24, "42": 24, "43": 25, "44": 25, "45": 26, "46": 26, "47": 30, "48": 30, "49": 33, "50": 33, "51": 36, "52": 36, "53": 38, "54": 39, "55": 40, "56": 40, "57": 43, "58": 46, "59": 47, "60": 48, "61": 48, "62": 51, "63": 52, "64": 54, "65": 55, "66": 60, "67": 65, "68": 65, "73": 72, "79": 70, "85": 70, "91": 85}}
+{"filename": "C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 75, "20": 0, "30": 2, "31": 11, "32": 11, "33": 12, "34": 12, "35": 13, "36": 13, "37": 14, "38": 14, "39": 17, "40": 17, "41": 18, "42": 18, "43": 24, "44": 24, "45": 25, "46": 25, "47": 26, "48": 26, "49": 30, "50": 30, "51": 33, "52": 33, "53": 36, "54": 36, "55": 38, "56": 39, "57": 40, "58": 40, "59": 43, "60": 46, "61": 47, "62": 48, "63": 48, "64": 51, "65": 52, "66": 54, "67": 55, "68": 60, "69": 65, "70": 65, "75": 72, "76": 75, "77": 76, "78": 76, "84": 70, "90": 70, "96": 90}}
 __M_END_METADATA
 """

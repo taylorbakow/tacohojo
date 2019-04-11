@@ -5,9 +5,9 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554917572.9725487
+_modified_time = 1554939581.884604
 _enable_loop = True
-_template_filename = 'C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/about.html'
+_template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/about.html'
 _template_uri = 'about.html'
 _source_encoding = 'utf-8'
 import django_mako_plus
@@ -30,12 +30,12 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
         self = context.get('self', UNDEFINED)
         def title():
             return render_title(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
@@ -68,10 +68,10 @@ def render_title(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context)
         self = context.get('self', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('    \r\n   <div style="text-align: center;">\r\n      <img src="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
@@ -83,6 +83,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/about.html", "uri": "about.html", "source_encoding": "utf-8", "line_map": {"29": 0, "40": 1, "45": 3, "50": 69, "56": 3, "62": 3, "68": 5, "76": 5, "77": 7, "78": 7, "84": 78}}
+{"filename": "C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/about.html", "uri": "about.html", "source_encoding": "utf-8", "line_map": {"29": 0, "40": 1, "45": 3, "50": 69, "56": 3, "62": 3, "68": 5, "76": 5, "77": 7, "78": 7, "84": 78}}
 __M_END_METADATA
 """
