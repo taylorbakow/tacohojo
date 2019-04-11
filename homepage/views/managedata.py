@@ -65,36 +65,26 @@ def create(request):
 @view_function
 def delete(request, pid):
     hmod.Prescriber.objects.get(id=pid).delete()
-    return process_request(request)
+    return HttpResponseRedirect('/homepage/managedata')
 
 @view_function
 def edit(request, pid):
-    prescriber = hmod.Prescriber.objects.get(id=pid)
+    prescriber = hmod.Drugs_Details.objects.filter(PrescriberID_id=pid)
     if request.method == 'POST':
         print('test')
-        form = CreateOrEditForm(request.POST, instance=prescriber)
+        form = EditForm(request.POST)
 
-        if form.is_valid():
-            print('test111')
-            prescriber.Fname = request.POST["Fname"]            
-            prescriber.Lname = request.POST["Lname"]
-            prescriber.Gender = request.POST["Gender"]
-            prescriber.Credentials = request.POST["Credentials"]
-            prescriber.Specialty = request.POST["Specialty"]
-            prescriber.OpioidPrescriber = request.POST["OpioidPrescriber"]
-            prescriber.StateAbbrev = request.POST["StateAbbrev"]
-            prescriber.TotalPrescription = request.POST["TotalPrescription"]
-            prescriber.AcetaminophinCodeine = request.POST["AcetaminophinCodeine"]
-            prescriber.Fentanyl = request.POST["Fentanyl"]
-            prescriber.HydrocodoneAcetaminophen = request.POST["HydrocodoneAcetaminophen"]
-            prescriber.OxycodoneAcetaminophen = request.POST["OxycodoneAcetaminophen"]
-            prescriber.Oxycontin = request.POST["Oxycontin"]
-            prescriber.save()
-            return HttpResponseRedirect('/homepage/managedata.html')
-        else:
-           raise forms.ValidationError("You are fired")
+        prescriber.PrescriberID.Fname = request.POST["Fname"]            
+        prescriber.PrescriberID.Lname = request.POST["Lname"]
+        prescriber.PrescriberID.Gender = request.POST["Gender"]
+        prescriber.PrescriberID.Credentials = request.POST["Credentials"]
+        prescriber.PrescriberID.Specialty = request.POST["Specialty"]
+        prescriber.PrescriberID.OpioidPrescriber = request.POST["OpioidPrescriber"]
+        prescriber.PrescriberID.StateAbbrev = request.POST["StateAbbrev"]
+        prescriber.save()
+        return HttpResponseRedirect('/homepage/managedata')
     else:
-        form = CreateOrEditForm()
+        form = EditForm()
 
     context={
         'form': form,
@@ -115,7 +105,6 @@ class CreateOrEditForm(forms.Form):
         (True, 'Yes'),
         (False, 'No')
     )
-
     Fname = forms.CharField(label="First Name", required=True)
     Lname = forms.CharField(label="Last Name", required=True)
     Gender = forms.ChoiceField(label="Gender", required=True, widget=forms.Select(), choices=GENDER_CHOICES)
@@ -129,3 +118,22 @@ class CreateOrEditForm(forms.Form):
     HydrocodoneAcetaminophen = forms.IntegerField(label="# Hydrocodone.Acetaminophen Prescribed", required=False)
     OxycodoneAcetaminophen = forms.IntegerField(label="# Oxycodone.Acetaminophen Prescribed", required=False)
     Oxycontin = forms.IntegerField(label="# Oxycontin Prescribed", required=False) 
+
+
+class EditForm(forms.Form):
+    GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female')
+    )
+
+    BOOLEAN_CHOICES = (
+        (True, 'Yes'),
+        (False, 'No')
+    )
+    Fname = forms.CharField(label="First Name", required=True)
+    Lname = forms.CharField(label="Last Name", required=True)
+    Gender = forms.ChoiceField(label="Gender", required=True, widget=forms.Select(), choices=GENDER_CHOICES)
+    Credentials = forms.CharField(label="Credentials", required=True)
+    Specialty = forms.CharField(label="Specialty", required=True)
+    OpioidPrescriber = forms.ChoiceField(label="Opioid Prescriber?", required=True, widget=forms.Select(), choices=BOOLEAN_CHOICES)
+    StateAbbrev = forms.ModelChoiceField(queryset=hmod.Prescriber.objects.order_by("StateAbbrev__StateAbbrev").values_list("StateAbbrev__StateAbbrev", flat=True).distinct(), label="State", widget=forms.Select(), required=True)

@@ -22,7 +22,7 @@
                 %else:
                 <td>${ prescriber.PrescriberID.Fname } ${ prescriber.PrescriberID.Lname }, ${ prescriber.PrescriberID.Credentials }</td>
                 %endif
-                <td>${ prescriber.PrescriberID.StateAbbrev }</td>
+                <td>${ prescriber.PrescriberID.StateAbbrev.StateAbbrev }</td>
                 <td>
                     %if (prescriber.PrescriberID.OpioidPrescriber) == True:
                     Opiod
