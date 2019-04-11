@@ -37,27 +37,23 @@ def create(request):
     if request.method == 'POST':
         print('test')
         form = CreateOrEditForm(request.POST)
-        print(form)
-        if form.is_valid():
-            print('test111')
-            p = hmod.Prescriber()
-            p.Fname = request.POST["Fname"]            
-            p.Lname = request.POST["Lname"]
-            p.Gender = request.POST["Gender"]
-            p.Credentials = request.POST["Credentials"]
-            p.Specialty = request.POST["Specialty"]
-            p.OpioidPrescriber = request.POST["OpioidPrescriber"]
-            p.StateAbbrev.StateAbbrev.id = request.POST["StateAbbrev"]
-            p.TotalPrescription = request.POST["TotalPrescription"]
-            p.AcetaminophinCodeine = request.POST["AcetaminophinCodeine"]
-            p.Fentanyl = request.POST["Fentanyl"]
-            p.HydrocodoneAcetaminophen = request.POST["HydrocodoneAcetaminophen"]
-            p.OxycodoneAcetaminophen = request.POST["OxycodoneAcetaminophen"]
-            p.Oxycontin = request.POST["Oxycontin"]
-            p.save()
-            return HttpResponseRedirect('/homepage/managedata.html')
-        else:
-           raise forms.ValidationError("You are fired")
+        print('test111')
+        p = hmod.Prescriber()
+        p.Fname = request.POST["Fname"]            
+        p.Lname = request.POST["Lname"]
+        p.Gender = request.POST["Gender"]
+        p.Credentials = request.POST["Credentials"]
+        p.Specialty = request.POST["Specialty"]
+        p.OpioidPrescriber = request.POST["OpioidPrescriber"]
+        p.StateAbbrev = hmod.States.objects.get(StateAbbrev=request.POST["StateAbbrev"])
+        p.TotalPrescription = request.POST["TotalPrescription"]
+        p.AcetaminophinCodeine = request.POST["AcetaminophinCodeine"]
+        p.Fentanyl = request.POST["Fentanyl"]
+        p.HydrocodoneAcetaminophen = request.POST["HydrocodoneAcetaminophen"]
+        p.OxycodoneAcetaminophen = request.POST["OxycodoneAcetaminophen"]
+        p.Oxycontin = request.POST["Oxycontin"]
+        p.save()
+        return HttpResponseRedirect('/homepage/managedata')
     else:
         form = CreateOrEditForm()
 
@@ -68,6 +64,7 @@ def create(request):
 
 @view_function
 def delete(request, pid):
+    hmod.Prescriber.objects.get(id=pid).delete()
     return process_request(request)
 
 @view_function
@@ -106,7 +103,7 @@ def edit(request, pid):
     return request.dmp.render('managedata.edit.html', context)
 
 class PrescriberForm(forms.Form):
-        prescribername = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber', 'placeholder' :'Search by Prescriber', 'style' : 'width: 90%;'}), required=False)
+    prescribername = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber', 'placeholder' :'Search by Prescriber', 'style' : 'width: 90%;'}), required=False)
 
 class CreateOrEditForm(forms.Form):
     GENDER_CHOICES = (
@@ -115,8 +112,8 @@ class CreateOrEditForm(forms.Form):
     )
 
     BOOLEAN_CHOICES = (
-        ('True', 'Yes'),
-        ('False', 'No')
+        (True, 'Yes'),
+        (False, 'No')
     )
 
     Fname = forms.CharField(label="First Name", required=True)

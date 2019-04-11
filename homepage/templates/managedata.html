@@ -46,7 +46,7 @@
                             <td style="width: 50px;">${ p.Specialty }</td>
                             <td style="text-align: center;">${ p.TotalPrescription }</td>
                             <td style="text-align: center;">${ p.AcetaminophinCodeine + p.Fentanyl + p.HydrocodoneAcetaminophen + p.OxycodoneAcetaminophen + p.Oxycontin}</td>
-                            <td><a href="/homepage/managedata.edit/${ p.id }"><button class="btn">Edit</button></a> | <button class="btn">Delete</button></td>
+                            <td><a href="/homepage/managedata.edit/${ p.id }"><button class="btn">Edit</button></a> | <a href="/homepage/managedata.delete/${ p.id }"><button class="btn">Delete</button></a></td>
                             <td></td>
                         </tr>
                         %endfor
