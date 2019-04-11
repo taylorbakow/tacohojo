@@ -32,13 +32,41 @@ def process_request(request):
     }
     return request.dmp.render('managedata.html', context)
 
-class PrescriberForm(forms.Form):
-        prescribername = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber', 'placeholder' :'Search by Prescriber', 'style' : 'width: 90%;'}), required=False)
-
 @view_function
 def create(request):
+    formP = CreateOrEditForm()
 
-    return request.dmp.render('managedata.create.html')
+    if request.method == 'POST':
+        print('test')
+        form = CreateOrEditForm(request.POST)
+
+        if form.is_valid():
+            print('test111')
+            p = hmod.Prescriber()
+            p.Fname = form.cleaned_data.get("Fname")
+            p.Lname = form.cleaned_data.get("Lname")
+            p.Gender = form.cleaned_data.get("Gender")
+            p.Credentials = form.cleaned_data.get("Credentials")
+            p.Specialty = form.cleaned_data.get("Specialty")
+            p.OpioidPrescriber = form.cleaned_data.get("OpioidPrescriber")
+            p.StateAbbrev = form.cleaned_data.get("StateAbbrev")
+            p.TotalPrescription = form.cleaned_data.get("TotalPrescription")
+            p.AcetaminophinCodeine = form.cleaned_data.get("AcetaminophinCodeine")
+            p.Fentanyl = form.cleaned_data.get("Fentanyl")
+            p.HydrocodoneAcetaminophen = form.cleaned_data.get("HydrocodoneAcetaminophen")
+            p.OxycodoneAcetaminophen = form.cleaned_data.get("OxycodoneAcetaminophen")
+            p.Oxycontin = form.cleaned_data.get("Oxycontin")
+            p.save()
+            return HttpResponseRedirect('/homepage/managedata.html')
+        else:
+           raise forms.ValidationError("You are fired")
+    else:
+        form = CreateOrEditForm()
+
+    context={
+        'formP': formP,
+    }
+    return request.dmp.render('managedata.create.html', context)
 
 @view_function
 def delete(request, pid):
@@ -55,17 +83,25 @@ def edit(request, pid):
     }
     return request.dmp.render('managedata.edit.html', context)
 
-    # class EditForm(forms.Form): 
-    #     Fname = forms.CharField()
-    #     Lname = forms.CharField()
-    #     Gender = forms.CharField(max_length=1)
-    #     Credentials = forms.CharField()
-    #     Specialty = forms.CharField()
-    #     OpioidPrescriber = forms.BooleanField()
-    #     StateAbbrev = forms.CharField(max_length=2)
-    #     TotalPrescription = forms.IntegerField()
-    #     AcetaminophinCodeine = forms.IntegerField(default=0)
-    #     Fentanyl = forms.IntegerField(default=0)
-    #     HydrocodoneAcetaminophen = forms.IntegerField(default=0)
-    #     OxycodoneAcetaminophen = forms.IntegerField(default=0)
-    #     Oxycontin = forms.IntegerField(default=0) 
+class PrescriberForm(forms.Form):
+        prescribername = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber', 'placeholder' :'Search by Prescriber', 'style' : 'width: 90%;'}), required=False)
+
+class CreateOrEditForm(forms.Form):
+    GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female')
+    )
+
+    Fname = forms.CharField(label="First Name", required=True)
+    Lname = forms.CharField(label="Last Name", required=True)
+    Gender = forms.ChoiceField(label="Gender", widget=forms.Select(), required=True, choices=GENDER_CHOICES)
+    Credentials = forms.CharField(label="Credentials", required=True)
+    Specialty = forms.CharField(label="Specialty", required=True)
+    OpioidPrescriber = forms.BooleanField(label="Opioid Prescriber?")
+    StateAbbrev = forms.ModelChoiceField(queryset=hmod.Prescriber.objects.order_by("StateAbbrev__StateAbbrev").values_list("StateAbbrev__StateAbbrev", flat=True).distinct(), label="State", widget=forms.Select(), required=True)
+    TotalPrescription = forms.IntegerField(label="Total Prescription", required=True)
+    AcetaminophinCodeine = forms.IntegerField(label="# Acetaminophin.Codeine Prescribed", required=False)
+    Fentanyl = forms.IntegerField(label="# Fentanyl Prescribed", required=False)
+    HydrocodoneAcetaminophen = forms.IntegerField(label="# Hydrocodone.Acetaminophen Prescribed", required=False)
+    OxycodoneAcetaminophen = forms.IntegerField(label="# Oxycodone.Acetaminophen Prescribed", required=False)
+    Oxycontin = forms.IntegerField(label="# Oxycontin Prescribed", required=False) 

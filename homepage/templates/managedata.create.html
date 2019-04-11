@@ -3,18 +3,14 @@
 <%block name="title">Contact Page</%block>
 
 <%block name="site_center">
+    <h3>Add a New Prescriber</h3>
     <div class="text-center">
-        <table class="table">
-            <thead>
-                <th></th>
-                <th>Prescriber Name</th>
-                <th>State</th>
-                <th>Presciber Type</th>
-                <th>Specialty</th>
-                <th>Total Prescriptions</th>
-                <th>Total Opioid Prescriptions</th>
-                <th></th>
-            </thead>
-        </table>
-    </div>  
+        <form method="POST">
+            <table class="table">
+                ${ formP.as_table() }
+            </table>
+            <br />
+            <div class="text-center"><input style="width: 140px;" class="btn btn-secondary" type="submit" value="Add"></div>
+        </form>
+    </div>
 </%block>
