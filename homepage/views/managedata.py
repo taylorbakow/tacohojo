@@ -34,8 +34,6 @@ def process_request(request):
 
 @view_function
 def create(request):
-    formP = CreateOrEditForm()
-
     if request.method == 'POST':
         print('test')
         form = CreateOrEditForm(request.POST)
@@ -43,19 +41,19 @@ def create(request):
         if form.is_valid():
             print('test111')
             p = hmod.Prescriber()
-            p.Fname = form.cleaned_data.get("Fname")
-            p.Lname = form.cleaned_data.get("Lname")
-            p.Gender = form.cleaned_data.get("Gender")
-            p.Credentials = form.cleaned_data.get("Credentials")
-            p.Specialty = form.cleaned_data.get("Specialty")
-            p.OpioidPrescriber = form.cleaned_data.get("OpioidPrescriber")
-            p.StateAbbrev = form.cleaned_data.get("StateAbbrev")
-            p.TotalPrescription = form.cleaned_data.get("TotalPrescription")
-            p.AcetaminophinCodeine = form.cleaned_data.get("AcetaminophinCodeine")
-            p.Fentanyl = form.cleaned_data.get("Fentanyl")
-            p.HydrocodoneAcetaminophen = form.cleaned_data.get("HydrocodoneAcetaminophen")
-            p.OxycodoneAcetaminophen = form.cleaned_data.get("OxycodoneAcetaminophen")
-            p.Oxycontin = form.cleaned_data.get("Oxycontin")
+            p.Fname = request.POST["Fname"]            
+            p.Lname = request.POST["Lname"]
+            p.Gender = request.POST["Gender"]
+            p.Credentials = request.POST["Credentials"]
+            p.Specialty = request.POST["Specialty"]
+            p.OpioidPrescriber = request.POST["OpioidPrescriber"]
+            p.StateAbbrev = request.POST["StateAbbrev"]
+            p.TotalPrescription = request.POST["TotalPrescription"]
+            p.AcetaminophinCodeine = request.POST["AcetaminophinCodeine"]
+            p.Fentanyl = request.POST["Fentanyl"]
+            p.HydrocodoneAcetaminophen = request.POST["HydrocodoneAcetaminophen"]
+            p.OxycodoneAcetaminophen = request.POST["OxycodoneAcetaminophen"]
+            p.Oxycontin = request.POST["Oxycontin"]
             p.save()
             return HttpResponseRedirect('/homepage/managedata.html')
         else:
@@ -64,7 +62,7 @@ def create(request):
         form = CreateOrEditForm()
 
     context={
-        'formP': formP,
+        'form': form,
     }
     return request.dmp.render('managedata.create.html', context)
 
@@ -74,12 +72,36 @@ def delete(request, pid):
 
 @view_function
 def edit(request, pid):
-    # eform = EditForm()
     prescriber = hmod.Prescriber.objects.get(id=pid)
+    if request.method == 'POST':
+        print('test')
+        form = CreateOrEditForm(request.POST)
+
+        if form.is_valid():
+            print('test111')
+            prescriber.Fname = request.POST["Fname"]            
+            prescriber.Lname = request.POST["Lname"]
+            prescriber.Gender = request.POST["Gender"]
+            prescriber.Credentials = request.POST["Credentials"]
+            prescriber.Specialty = request.POST["Specialty"]
+            prescriber.OpioidPrescriber = request.POST["OpioidPrescriber"]
+            prescriber.StateAbbrev = request.POST["StateAbbrev"]
+            prescriber.TotalPrescription = request.POST["TotalPrescription"]
+            prescriber.AcetaminophinCodeine = request.POST["AcetaminophinCodeine"]
+            prescriber.Fentanyl = request.POST["Fentanyl"]
+            prescriber.HydrocodoneAcetaminophen = request.POST["HydrocodoneAcetaminophen"]
+            prescriber.OxycodoneAcetaminophen = request.POST["OxycodoneAcetaminophen"]
+            prescriber.Oxycontin = request.POST["Oxycontin"]
+            prescriber.save()
+            return HttpResponseRedirect('/homepage/managedata.html')
+        else:
+           raise forms.ValidationError("You are fired")
+    else:
+        form = CreateOrEditForm()
 
     context={
+        'form': form,
         'prescriber': prescriber,
-        # 'eform': eform,
     }
     return request.dmp.render('managedata.edit.html', context)
 
@@ -94,7 +116,7 @@ class CreateOrEditForm(forms.Form):
 
     Fname = forms.CharField(label="First Name", required=True)
     Lname = forms.CharField(label="Last Name", required=True)
-    Gender = forms.ChoiceField(label="Gender", widget=forms.Select(), required=True, choices=GENDER_CHOICES)
+    Gender = forms.ChoiceField(label="Gender", required=True, choices=GENDER_CHOICES)
     Credentials = forms.CharField(label="Credentials", required=True)
     Specialty = forms.CharField(label="Specialty", required=True)
     OpioidPrescriber = forms.BooleanField(label="Opioid Prescriber?")
