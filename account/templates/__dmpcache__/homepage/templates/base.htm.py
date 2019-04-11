@@ -5,7 +5,11 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
+<<<<<<< HEAD
 _modified_time = 1554912205.7830443
+=======
+_modified_time = 1554923999.9714146
+>>>>>>> ed7d32bf964178fe9aae39edb5f65a9719862e3f
 _enable_loop = True
 _template_filename = 'C:/Users/Think/tacohojo/homepage/templates/base.htm'
 _template_uri = '/homepage/templates/base.htm'
@@ -26,7 +30,10 @@ def render_body(context,**pageargs):
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content():
             return render_content(context._locals(__M_locals))
+<<<<<<< HEAD
 
+=======
+>>>>>>> ed7d32bf964178fe9aae39edb5f65a9719862e3f
         __M_writer = context.writer()
         __M_writer('<!DOCTYPE html>\r\n<html>\r\n    <meta charset="UTF-8">\r\n    <head>\r\n\r\n        <title>DMP</title>\r\n\r\n        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>\r\n        <script src="/django_mako_plus/dmp-common.min.js"></script>\r\n        ')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( django_mako_plus.links(self) ))
@@ -96,10 +103,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-<<<<<<< HEAD
-{"filename": "C:/Users/Think/tacohojo/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 69, "20": 0, "30": 2, "31": 11, "32": 11, "33": 12, "34": 12, "35": 13, "36": 13, "37": 14, "38": 14, "39": 22, "40": 22, "41": 23, "42": 23, "43": 24, "44": 24, "45": 28, "46": 28, "47": 31, "48": 31, "49": 34, "50": 34, "51": 39, "52": 40, "53": 41, "54": 41, "55": 44, "56": 45, "57": 47, "58": 48, "59": 53, "60": 58, "61": 58, "66": 65, "67": 69, "68": 70, "69": 70, "75": 63, "81": 63, "87": 81}}
-=======
 {"filename": "C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 0, "28": 2, "29": 11, "30": 11, "31": 12, "32": 12, "33": 13, "34": 13, "35": 14, "36": 14, "37": 17, "38": 17, "39": 18, "40": 18, "41": 24, "42": 24, "43": 25, "44": 25, "45": 26, "46": 26, "47": 30, "48": 30, "49": 33, "50": 33, "51": 36, "52": 36, "53": 38, "54": 39, "55": 40, "56": 40, "57": 43, "58": 46, "59": 47, "60": 48, "61": 48, "62": 51, "63": 52, "64": 54, "65": 55, "66": 60, "67": 65, "68": 65, "73": 72, "79": 70, "85": 70, "91": 85}}
->>>>>>> 6dca431b713802861c3b153dec4518210bb7c5e3
 __M_END_METADATA
 """
