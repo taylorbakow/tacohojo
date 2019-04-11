@@ -10,7 +10,19 @@
                 ${ form.as_table() }
             </table>
             <br />
-            <div class="text-center"><input style="width: 140px;" class="btn btn-secondary" type="submit" value="Edit"></div>
+            <div class="text-center"></div><input style="width: 170px; margin-bottom: 72px; margin-top: -35px;" class="btn btn-secondary" type="submit" value="Edit Prescriber Info"/></div>
         </form>
+        %for d in dlist:
+            <form method="POST">
+                    <div class="grid">
+                        <div class="row" style='margin-top: 5px;'>
+                                <p class="col-3">${d.DrugID.DrugName}</p>
+                                ${ formd }
+                                <input style="margin-left:20px;" class="btn btn-info col-3" type="submit" value="Edit Prescription Amount"/>
+                                <input type="hidden" value="${d.DrugID.id}" name="id" >
+                        </div>
+                    </div>
+            </form>
+        %endfor
     </div> 
 </%block>
