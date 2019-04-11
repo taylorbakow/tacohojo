@@ -32,12 +32,10 @@ def prescriberdetail(request, prescriberid:hmod.Prescriber):
 
     prescriber = hmod.Drugs_Details.objects.filter(PrescriberID=prescriberid).first()
     drugs = hmod.Drugs_Details.objects.order_by('-QtyPrescribed').filter(PrescriberID=prescriberid)
-    group = request.user.groups.first()
     
 
     context={
         'prescriber': prescriber,
         'drugs': drugs,
-        'group': group,
     }
     return request.dmp.render('prescriberdetail.html', context)
