@@ -23,7 +23,18 @@ def process_request(request):
             if len(request.POST['prescribername']) > 0 and len(request.POST['drugname']) > 0:
                 pname = request.POST['prescribername']
                 dname = request.POST['drugname']
-                pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()[0:10]
+                attr = request.POST['attribute']
+                if attr == 'Name':
+                    pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()[0:10]
+                elif attr == 'Credentials':
+                    pList = hmod.Prescriber.objects.filter( Q(Credentials__icontains=pname)).distinct()[0:10]
+                elif attr == 'Specialty':
+                    pList = hmod.Prescriber.objects.filter( Q(Specialty__icontains=pname)).distinct()[0:10]
+                elif attr == 'Gender':
+                    pList = hmod.Prescriber.objects.filter( Q(Gender__icontains=pname)).distinct()[0:10]
+                else:
+                    pList = hmod.Prescriber.objects.filter( Q(StateAbbrev=pname)).distinct()[0:10]
+
                 dList = hmod.Opioids.objects.filter(DrugName__icontains=dname).distinct()[0:10]
                 pidList = []
                 didList = []
@@ -37,7 +48,17 @@ def process_request(request):
             elif len(request.POST['prescribername']) > 0:
                 print('prescriber')
                 pname = request.POST['prescribername']
-                pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()[0:10]
+                attr = request.POST['attribute']
+                if attr == 'Name':
+                    pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()[0:10]
+                elif attr == 'Credentials':
+                    pList = hmod.Prescriber.objects.filter( Q(Credentials__icontains=pname)).distinct()[0:10]
+                elif attr == 'Specialty':
+                    pList = hmod.Prescriber.objects.filter( Q(Specialty__icontains=pname)).distinct()[0:10]
+                elif attr == 'Gender':
+                    pList = hmod.Prescriber.objects.filter( Q(Gender__icontains=pname)).distinct()[0:10]
+                else:
+                    pList = hmod.Prescriber.objects.filter( Q(StateAbbrev=pname)).distinct()[0:10]
                 objectType = 'Prescriber'
             elif len(request.POST['drugname']) > 0:
                 print('drug')
@@ -60,7 +81,15 @@ def process_request(request):
         return HttpResponseRedirect('/account/login')
 
 class PrescriberForm(forms.Form):
+    attr = [
+        ("Name", "Name"),
+        ("Credentials", "Credentials"),
+        ("Specialty", "Specialty"), 
+        ("Gender", "Gender"), 
+        ("State", "State"), 
+    ]
     prescribername = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber', 'placeholder' :'Search by Prescriber'}), required=False)
+    attribute = forms.CharField(label='', widget=forms.Select(choices=attr, attrs={'class' : 'form-control', 'style' : 'width: 155px; margin-left: 162px; margin-top:5px;'}))
 
 class DrugForm(forms.Form):
     drugname = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Drug', 'placeholder' :'Search by Drug Name'}), required=False)
