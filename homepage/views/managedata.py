@@ -75,7 +75,7 @@ def edit(request, pid):
     prescriber = hmod.Prescriber.objects.get(id=pid)
     if request.method == 'POST':
         print('test')
-        form = CreateOrEditForm(request.POST)
+        form = CreateOrEditForm(request.POST, instance=prescriber)
 
         if form.is_valid():
             print('test111')
@@ -125,7 +125,7 @@ class CreateOrEditForm(forms.Form):
     Credentials = forms.CharField(label="Credentials", required=True)
     Specialty = forms.CharField(label="Specialty", required=True)
     OpioidPrescriber = forms.ChoiceField(label="Opioid Prescriber?", required=True, widget=forms.Select(), choices=BOOLEAN_CHOICES)
-    StateAbbrev = forms.ModelChoiceField(queryset=hmod.Prescriber.objects.order_by("StateAbbrev__StateAbbrev.id").values_list("StateAbbrev__StateAbbrev", flat=True).distinct(), label="State", widget=forms.Select(), required=True)
+    StateAbbrev = forms.ModelChoiceField(queryset=hmod.Prescriber.objects.order_by("StateAbbrev__StateAbbrev").values_list("StateAbbrev__StateAbbrev", flat=True).distinct(), label="State", widget=forms.Select(), required=True)
     TotalPrescription = forms.IntegerField(label="Total Prescription", required=True)
     AcetaminophinCodeine = forms.IntegerField(label="# Acetaminophin.Codeine Prescribed", required=False)
     Fentanyl = forms.IntegerField(label="# Fentanyl Prescribed", required=False)
