@@ -37,7 +37,7 @@ def create(request):
     if request.method == 'POST':
         print('test')
         form = CreateOrEditForm(request.POST)
-
+        print(form)
         if form.is_valid():
             print('test111')
             p = hmod.Prescriber()
@@ -47,7 +47,7 @@ def create(request):
             p.Credentials = request.POST["Credentials"]
             p.Specialty = request.POST["Specialty"]
             p.OpioidPrescriber = request.POST["OpioidPrescriber"]
-            p.StateAbbrev = request.POST["StateAbbrev"]
+            p.StateAbbrev.StateAbbrev.id = request.POST["StateAbbrev"]
             p.TotalPrescription = request.POST["TotalPrescription"]
             p.AcetaminophinCodeine = request.POST["AcetaminophinCodeine"]
             p.Fentanyl = request.POST["Fentanyl"]
@@ -114,13 +114,18 @@ class CreateOrEditForm(forms.Form):
         ('F', 'Female')
     )
 
+    BOOLEAN_CHOICES = (
+        ('True', 'Yes'),
+        ('False', 'No')
+    )
+
     Fname = forms.CharField(label="First Name", required=True)
     Lname = forms.CharField(label="Last Name", required=True)
-    Gender = forms.ChoiceField(label="Gender", required=True, choices=GENDER_CHOICES)
+    Gender = forms.ChoiceField(label="Gender", required=True, widget=forms.Select(), choices=GENDER_CHOICES)
     Credentials = forms.CharField(label="Credentials", required=True)
     Specialty = forms.CharField(label="Specialty", required=True)
-    OpioidPrescriber = forms.BooleanField(label="Opioid Prescriber?")
-    StateAbbrev = forms.ModelChoiceField(queryset=hmod.Prescriber.objects.order_by("StateAbbrev__StateAbbrev").values_list("StateAbbrev__StateAbbrev", flat=True).distinct(), label="State", widget=forms.Select(), required=True)
+    OpioidPrescriber = forms.ChoiceField(label="Opioid Prescriber?", required=True, widget=forms.Select(), choices=BOOLEAN_CHOICES)
+    StateAbbrev = forms.ModelChoiceField(queryset=hmod.Prescriber.objects.order_by("StateAbbrev__StateAbbrev.id").values_list("StateAbbrev__StateAbbrev", flat=True).distinct(), label="State", widget=forms.Select(), required=True)
     TotalPrescription = forms.IntegerField(label="Total Prescription", required=True)
     AcetaminophinCodeine = forms.IntegerField(label="# Acetaminophin.Codeine Prescribed", required=False)
     Fentanyl = forms.IntegerField(label="# Fentanyl Prescribed", required=False)
