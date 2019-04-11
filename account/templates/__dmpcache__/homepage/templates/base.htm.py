@@ -5,10 +5,10 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1554956652.798951
+_modified_time = 1554956643.9413013
 _enable_loop = True
 _template_filename = 'C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/base.htm'
-_template_uri = 'base.htm'
+_template_uri = '/homepage/templates/base.htm'
 _source_encoding = 'utf-8'
 import django_mako_plus
 import django.utils.html
@@ -95,6 +95,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/base.htm", "uri": "base.htm", "source_encoding": "utf-8", "line_map": {"18": 75, "20": 0, "30": 2, "31": 11, "32": 11, "33": 12, "34": 12, "35": 13, "36": 13, "37": 14, "38": 14, "39": 17, "40": 17, "41": 18, "42": 18, "43": 24, "44": 24, "45": 25, "46": 25, "47": 26, "48": 26, "49": 30, "50": 30, "51": 33, "52": 33, "53": 36, "54": 36, "55": 38, "56": 39, "57": 40, "58": 40, "59": 43, "60": 46, "61": 47, "62": 48, "63": 48, "64": 51, "65": 52, "66": 54, "67": 55, "68": 60, "69": 65, "70": 65, "75": 72, "76": 75, "77": 76, "78": 76, "84": 70, "90": 70, "96": 90}}
+{"filename": "C:/Users/Taylo/github/tacohojo/tacohojo/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"18": 75, "20": 0, "30": 2, "31": 11, "32": 11, "33": 12, "34": 12, "35": 13, "36": 13, "37": 14, "38": 14, "39": 17, "40": 17, "41": 18, "42": 18, "43": 24, "44": 24, "45": 25, "46": 25, "47": 26, "48": 26, "49": 30, "50": 30, "51": 33, "52": 33, "53": 36, "54": 36, "55": 38, "56": 39, "57": 40, "58": 40, "59": 43, "60": 46, "61": 47, "62": 48, "63": 48, "64": 51, "65": 52, "66": 54, "67": 55, "68": 60, "69": 65, "70": 65, "75": 72, "76": 75, "77": 76, "78": 76, "84": 70, "90": 70, "96": 90}}
 __M_END_METADATA
 """
