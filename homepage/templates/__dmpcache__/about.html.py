@@ -6,10 +6,14 @@ __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
 <<<<<<< HEAD
+<<<<<<< HEAD
 _modified_time = 1554960532.720857
 =======
 _modified_time = 1554955747.6419432
 >>>>>>> c46798a694b2d73ef2ad2f26cbd5fb38c2813143
+=======
+_modified_time = 1554956670.1704957
+>>>>>>> 534304a0b5be85d589cb13d437e16611a9c096f4
 _enable_loop = True
 _template_filename = 'C:/Users/jhoyo/Desktop/dmp/tacohojo/homepage/templates/about.html'
 _template_uri = 'about.html'
@@ -34,8 +38,10 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def title():
             return render_title(context._locals(__M_locals))
+<<<<<<< HEAD
         self = context.get('self', UNDEFINED)
 <<<<<<< HEAD
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
@@ -46,6 +52,11 @@ def render_body(context,**pageargs):
             return render_content(context._locals(__M_locals))
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
 >>>>>>> c46798a694b2d73ef2ad2f26cbd5fb38c2813143
+=======
+        def content():
+            return render_content(context._locals(__M_locals))
+        self = context.get('self', UNDEFINED)
+>>>>>>> 534304a0b5be85d589cb13d437e16611a9c096f4
         __M_writer = context.writer()
         __M_writer('\r\n\r\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
@@ -80,9 +91,9 @@ def render_content(context,**pageargs):
     try:
         self = context.get('self', UNDEFINED)
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        self = context.get('self', UNDEFINED)
         def content():
             return render_content(context)
+        self = context.get('self', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('    \r\n   <div style="text-align: center;">\r\n      <img src="')
         __M_writer(django_mako_plus.ExpressionPostProcessor(self)( STATIC_URL ))
