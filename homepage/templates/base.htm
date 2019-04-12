@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <head>
 
-        <title>DMP</title>
+        <title>HHS Web Database</title>
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="/django_mako_plus/dmp-common.min.js"></script>
@@ -25,10 +25,10 @@
     <%block name="tempBody">
         <body>
     </%block>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+            <nav style="background-color: #04294a" class="navbar navbar-expand-lg navbar-dark justify-content-between">
                 <ul class="nav navbar-nav navbar-left">
                     <!-- PAGE IS ${ request.dmp.page } -->
-                    <a href="/" class="navbar-left"><img src="http://mediad.publicbroadcasting.net/p/wfsu/files/styles/x_large/public/201407/hhs_courtesy_www.hhs_.gov_.png" style="width:50px; height:40px; margin-right:10px;"></a>
+                    <a href="/" class="navbar-left"><img class="rounded" src="http://mediad.publicbroadcasting.net/p/wfsu/files/styles/x_large/public/201407/hhs_courtesy_www.hhs_.gov_.png" style="width:40px; height:35px; margin-right:10px;"></a>
                     <li class="nav-item ${'active' if request.dmp.page == 'index' else ''}">
                         <a class="nav-link" href="/">Home</a>
                     </li>
@@ -49,7 +49,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item dropdown navbar-right">
                         % if request.user.is_authenticated:
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a style="color: orange" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Welcome, ${ request.user.first_name }
                         </a>
                         % endif
@@ -66,12 +66,16 @@
                     </li>
                 </ul>
             </nav>
-            <header>
-                <img style="width: 100px; height: 100px;" src="http://mediad.publicbroadcasting.net/p/wfsu/files/styles/x_large/public/201407/hhs_courtesy_www.hhs_.gov_.png" alt="python" />
-                <div class="title" style="color: black"> HHS Web Database </div>
-            </header>
 
-            <main>
+            <%block name="header">
+            <header class="jumbotron text-center" style="background-color: white;
+            height: 190px;">
+                <h1 class="jumbotron-heading" style="color: black; font-weight: 500; font-size: 55px; margin-top: -30px; text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);"> HHS Web Database </h1>
+                <img class="rounded" style="width: 65px; height: 65px;" src="http://mediad.publicbroadcasting.net/p/wfsu/files/styles/x_large/public/201407/hhs_courtesy_www.hhs_.gov_.png" alt="python" />
+            </header>
+            </%block>
+
+            <main style="background-color: white">
                 <%block name="content">
                 
                 </%block>

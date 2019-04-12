@@ -91,10 +91,10 @@ class PrescriberForm(forms.Form):
         ("Gender", "Gender"), 
         ("State", "State"), 
     ]
-    prescribername = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber', 'placeholder' :'Search Prescriber'}), required=False)
-    attribute = forms.CharField(label='', widget=forms.Select(choices=attr, attrs={'class' : 'form-control', 'style' : 'width: 155px; margin-left: 162px; margin-top:5px;'}))
+    prescribername = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber', 'placeholder' :'Search Prescriber', 'style': 'font-weight:400;'}), required=False)
+    attribute = forms.CharField(label='', widget=forms.Select(choices=attr, attrs={'class' : 'form-control', 'style' : 'width: 155px; margin-left: 162px; margin-top:5px; font-weight:400;'}))
 
 class DrugForm(forms.Form):
-    drugname = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Drug', 'placeholder' :'Search by Drug Name'}), required=False)
-    isopiod = forms.BooleanField(required=False, label='Only Include Opiods?', widget=forms.CheckboxInput(attrs={'style': 'margin-left: 10px;'}))
+    drugname = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Drug', 'placeholder' :'Search by Drug Name', 'style': 'font-weight:400;'}), required=False)
+    isopiod = forms.BooleanField(required=False, label='Only Include Opiods?', widget=forms.CheckboxInput(attrs={'style': 'margin-left: 10px; font-weight:400;'}))
 
