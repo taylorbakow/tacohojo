@@ -1,6 +1,31 @@
 <%inherit file="/homepage/templates/app_base.htm"/>
 
 <%block name="content">
-
+<table class="table">
+        <thead>
+            <th></th>
+            <th>Top 30 Prescribers</th>
+            <th>State</th>
+            <th>Specialty</th>
+            <th>Risk Rating</th>
+            <th></th>
+        </thead>
+        <tbody>
+            %for p in prescribers:
+            <tr>
+                <td></td>
+                %if request.user.groups.filter(name='Prescribers').exists():
+                    <td><a href="/homepage/details.prescriberdetail/${ p.id  }">${ p.id }</a></td>
+                %else:
+                    <td><a href="/homepage/details.prescriberdetail/${ p.id  }"> ${ p.Fname } ${ p.Lname }, ${ p.Credentials }</a></td>
+                %endif
+                <td>${ p.StateAbbrev.StateName}</td>
+                <td>${ p.Specialty }</td>
+                <td>${ p.RiskRating }</td>
+                <td></td>
+            </tr>
+            %endfor
+        </tbody> 
+    </table>
 
 </%block>
