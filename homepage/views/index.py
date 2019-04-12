@@ -63,7 +63,10 @@ def process_request(request):
             elif len(request.POST['drugname']) > 0:
                 print('drug')
                 dname = request.POST['drugname']
-                dList = hmod.Opioids.objects.filter(DrugName__icontains=dname).distinct()[0:10]
+                if request.POST['isopiod'] == 'on':
+                    dList = hmod.Opioids.objects.filter(DrugName__icontains=dname, IsOpioid='True')[0:10]
+                else:
+                    dList = hmod.Opioids.objects.filter(DrugName__icontains=dname).distinct()[0:10]
                 objectType = 'Drug'
         else:
             pass
@@ -93,4 +96,5 @@ class PrescriberForm(forms.Form):
 
 class DrugForm(forms.Form):
     drugname = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Drug', 'placeholder' :'Search by Drug Name'}), required=False)
+    isopiod = forms.BooleanField(label='Only Include Opiods?', widget=forms.CheckboxInput(attrs={'style': 'margin-left: 10px;'}))
 

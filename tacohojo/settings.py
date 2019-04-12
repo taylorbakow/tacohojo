@@ -26,7 +26,7 @@ SECRET_KEY = '=sn+t0+*p#tc2^pu%w=-_4^8*fqk4r%k(t(ixe!o!r5gde5ha+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django_mako_plus.RequestInitMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -141,7 +142,9 @@ STATICFILES_DIRS = (
     # SECURITY WARNING: this next line must be commented out at deployment
     BASE_DIR,
 )
-STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # A logger for DMP
