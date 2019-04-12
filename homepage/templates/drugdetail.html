@@ -2,7 +2,7 @@
 
 <%block name="breadcrum">
 <ol class="breadcrumb" style="background-color: transparent">
-    <li><a href="#">Home</a></li>
+    <li><a href="/index/">Home</a></li>
     <li class="active">Drug Details</li>
 </ol>
 </%block>
@@ -56,17 +56,14 @@
 
 <%block name="site_center">
     <div>    
-        <table class="table">
-            <thead>
-                <th></th>
-                <th>Drug Name</th>
-                <th>Type</th>
-                <th></th>
+        <table style="width:45%; float: left;" class="table">
+            <thead style="font-size:larger">
+                <h3>${ drug.DrugID.DrugName }</h3>
             </thead>
             <tbody>
                 <tr>
                     <td></td>
-                    <td>${ drug.DrugID.DrugName }</td>
+                    <td><b>Type</b></td>
                     %if (drug.DrugID.IsOpioid) == True:
                         <td>Opioid</td>
                     %else:
@@ -74,15 +71,25 @@
                     %endif
                     <td></td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td><b>Chart Explanation</b></td>
+                <td>Total number of this drug prescribed by specialty. Select filter to change or add additional drugs, or to see chart of all drugs. </br> Different colors represent different medical speacialties, size represents total number prescribed</td></tr>
+                <td></td>
             </tbody> 
+
         </table>
+        
+    </div>
+    <div id="vizContainer" style="float: left; margin-left: 20px;">
+
     </div>
     <table class="table">
         <thead>
             <th></th>
             <th>Top 10 Prescribers</th>
             <th>Specialty</th>
-            <th># Prescribed</th>
+            <th>Amount Prescribed</th>
             <th></th>
         </thead>
         <tbody>
@@ -101,9 +108,7 @@
             %endfor
         </tbody> 
     </table>
-    <div id="vizContainer" style="margin-left: 30%; margin-right: 10%; position: relative">
 
-    </div>
     <div class='tableauPlaceholder' id='viz1555013499484' style='position: relative'>
         <noscript><a href='#'>
             <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;JH&#47;JH3KGF7K9&#47;1_rss.png' style='border: none' /></a>

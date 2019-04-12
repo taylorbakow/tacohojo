@@ -2,7 +2,7 @@
 
 <%block name="breadcrum">
 <ol class="breadcrumb" style="background-color: transparent">
-    <li><a href="#">Home</a></li>
+    <li><a href="/index/">Home</a></li>
     <li class="active">Prescriber Details</li>
 </ol>
 </%block>
@@ -72,12 +72,11 @@
                 <div>
                     <table style="width:45%; float: left;" class="table">
                         <thead>
-                            <th></th>
-                            <th>Prescriber Name</th>
+                            
                             %if request.user.groups.filter(name='Prescribers').exists():
-                                <td>${ prescriber.PrescriberID.id }, ${ prescriber.PrescriberID.Credentials }</td>
+                                <h3>${ prescriber.PrescriberID.id } || ${ prescriber.PrescriberID.Credentials }</h3>
                             %else:
-                                <td>${ prescriber.PrescriberID.Fname } ${ prescriber.PrescriberID.Lname }, ${ prescriber.PrescriberID.Credentials }</td>
+                                <h3>${ prescriber.PrescriberID.Fname } ${ prescriber.PrescriberID.Lname }, ${ prescriber.PrescriberID.Credentials }</h3>
                             %endif
                             
                         </thead>
