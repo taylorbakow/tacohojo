@@ -25,7 +25,7 @@
            
             var options = {
                 width: 600,
-                height: 475,
+                height: 400,
                 hideTabs: true,
                 hideToolbar: true,
                 onFirstInteractive: function () {
@@ -56,6 +56,12 @@
 </%block>           
 
 <%block name="site_center">
+                %if (prescriber.PrescriberID.RiskRating) > 1:
+                <h3 style="text-align:right; margin-right:12%;">Overpresciber Risk Rating: <span style="color:red;">${ prescriber.PrescriberID.RiskRating }</span></h3>
+                %else:
+                <h3 style="text-align:right; margin-right:12%;">Overpresciber Risk Rating: <span style="color:green;">${ prescriber.PrescriberID.RiskRating }</span></h3>
+                %endif  
+                <p style="text-align:right; margin-right:12%;">_____________________________________</p>
                 <div>
                     <table style="width:45%; float: left;" class="table">
                         <thead>
@@ -96,8 +102,13 @@
                             <tr>
                                 <td></td>
                                 <td><b>Gender</b></td>
-                                <td>${ prescriber.PrescriberID.Gender }</td>
-                                
+                                    <td>
+                                        %if ( prescriber.PrescriberID.Gender ) == "M":
+                                            Male
+                                        %else: 
+                                            Female
+                                        %endif
+                                    </td>   
                             </tr>
                             <tr>
                                 <td></td>
@@ -126,21 +137,12 @@
                                     %endif
                                 </td>   
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td><b>Overprescibe Risk Rating</b></td>
-                                %if (prescriber.PrescriberID.RiskRating) > 1:
-                                    <td style="color:red">${ prescriber.PrescriberID.RiskRating }</td>
-                                %else:
-                                    <td style="color:green">${ prescriber.PrescriberID.RiskRating }</td>
-                                %endif  
-                            </tr>
                         </tbody> 
                     </table>
 
                 </div>    
                 <div id="vizContainer" style="float: left; margin-left: 20px;">
-
+                       
                 </div>
             </br>
                 <table class="table">
