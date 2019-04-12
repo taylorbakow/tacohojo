@@ -49,12 +49,18 @@ def create(request):
         p.Specialty = request.POST["Specialty"]
         p.OpioidPrescriber = request.POST["OpioidPrescriber"]
         p.StateAbbrev = hmod.States.objects.get(StateAbbrev=request.POST["StateAbbrev"])
-        p.TotalPrescription = request.POST["TotalPrescription"]
-        p.AcetaminophinCodeine = request.POST["AcetaminophinCodeine"]
-        p.Fentanyl = request.POST["Fentanyl"]
-        p.HydrocodoneAcetaminophen = request.POST["HydrocodoneAcetaminophen"]
-        p.OxycodoneAcetaminophen = request.POST["OxycodoneAcetaminophen"]
-        p.Oxycontin = request.POST["Oxycontin"]
+        if request.POST["TotalPrescription"] is not '':
+            p.TotalPrescription = request.POST["TotalPrescription"]
+        if request.POST["AcetaminophinCodeine"] is not '':
+            p.AcetaminophinCodeine = request.POST["AcetaminophinCodeine"]
+        if request.POST["Fentanyl"] is not '':
+            p.Fentanyl = request.POST["Fentanyl"]
+        if request.POST["HydrocodoneAcetaminophen"] is not '':
+            p.HydrocodoneAcetaminophen = request.POST["HydrocodoneAcetaminophen"]
+        if request.POST["OxycodoneAcetaminophen"] is not '':
+            p.OxycodoneAcetaminophen = request.POST["OxycodoneAcetaminophen"]
+        if request.POST["Oxycontin"] is not '':
+            p.Oxycontin = request.POST["Oxycontin"]
         p.save()
         return HttpResponseRedirect('/homepage/managedata')
     else:
@@ -75,24 +81,24 @@ def edit(request, pid):
     prescriber = hmod.Drugs_Details.objects.filter(PrescriberID_id=pid).first()
     dlist = hmod.Drugs_Details.objects.filter(PrescriberID_id=pid)
     if request.method == 'POST':
-        if request.POST["NumDrugs"] is None:
+        if request.POST.get("NumDrugs", False) is False:
             print('test')
             form = EditForm(request.POST)
             formd = EditDrug()
             prescriber.PrescriberID.id = pid
-            if request.POST["Fname"] is not '':
+            if request.POST.get("Fname", False) is not '' or False:
                 prescriber.PrescriberID.Fname = request.POST["Fname"] 
-            if request.POST["Lname"] is not '':           
+            if request.POST.get("Lname", False) is not '' or False:           
                 prescriber.PrescriberID.Lname = request.POST["Lname"]
-            if request.POST["Gender"] is not '':
+            if request.POST.get("Gender", False) is not '' or False:
                 prescriber.PrescriberID.Gender = request.POST["Gender"]
-            if request.POST["Credentials"] is not '':
+            if request.POST.get("Credentials", False) is not '' or False:
                 prescriber.PrescriberID.Credentials = request.POST["Credentials"]
-            if request.POST["Specialty"] is not '':
+            if request.POST.get("Specialty", False) is not '' or False:
                 prescriber.PrescriberID.Specialty = request.POST["Specialty"]
-            if request.POST["OpioidPrescriber"] is not '':
+            if request.POST.get("OpioidPrescriber", False) is not '' or False:
                 prescriber.PrescriberID.OpioidPrescriber = request.POST["OpioidPrescriber"]
-            if request.POST["StateAbbrev"] is not '':
+            if request.POST.get("StateAbbrev", False) is not '': 
                 prescriber.PrescriberID.StateAbbrev = request.POST["StateAbbrev"]
             prescriber.PrescriberID.save()
             return HttpResponseRedirect('/homepage/managedata')
@@ -137,7 +143,7 @@ class CreateOrEditForm(forms.Form):
     Specialty = forms.CharField(label="Specialty", required=True)
     OpioidPrescriber = forms.ChoiceField(label="Opioid Prescriber?", required=True, widget=forms.Select(), choices=BOOLEAN_CHOICES)
     StateAbbrev = forms.ModelChoiceField(queryset=hmod.Prescriber.objects.order_by("StateAbbrev__StateAbbrev").values_list("StateAbbrev__StateAbbrev", flat=True).distinct(), label="State", widget=forms.Select(), required=True)
-    TotalPrescription = forms.IntegerField(label="Total Prescription", required=True)
+    TotalPrescription = forms.IntegerField(label="Total Prescription", required=False)
     AcetaminophinCodeine = forms.IntegerField(label="# Acetaminophin.Codeine Prescribed", required=False)
     Fentanyl = forms.IntegerField(label="# Fentanyl Prescribed", required=False)
     HydrocodoneAcetaminophen = forms.IntegerField(label="# Hydrocodone.Acetaminophen Prescribed", required=False)

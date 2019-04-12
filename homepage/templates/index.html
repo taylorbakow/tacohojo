@@ -75,10 +75,18 @@
                         <table class="table table-hover" id="dev-table">
                             <tr>
                                 <th>Full Name</th>
+                                <th>Credentials</th>
+                                <th>Specialty</th>
+                                <th>Gender</th>
+                                <th>State</th>
                             </tr>
                         %for p in pList:
                             <tr>
                                 <td><a href='/homepage/details.prescriberdetail/${ p.id }'>${p.Fname} ${p.Lname}</a></td>
+                                <td>${p.Credentials}</td>
+                                <td>${p.Specialty}</td>
+                                <td>${p.Gender}</td>
+                                <td>${p.StateAbbrev.StateName}</td>
                             </tr>
                         %endfor
                         </table>
@@ -89,10 +97,16 @@
                         <table class="table table-hover" id="dev-table">
                             <tr>
                                 <th>Drug Name</th>
+                                <th>Type</th>                               
                             </tr>
                         %for d in dList:
                             <tr>
                                 <td><a href='/homepage/details.drugdetail/${ d.id }'>${d.DrugName}</a></td>
+                                %if (d.IsOpioid) == True:
+                                    <td>Opioid</td>
+                                %else:
+                                    <td>Non-Opioid</td>
+                                %endif
                             </tr>
                         %endfor
                         </table>
