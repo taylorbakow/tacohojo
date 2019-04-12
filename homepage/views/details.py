@@ -12,7 +12,10 @@ from django.db.models import Avg
 
 @view_function
 def process_request(request, prescriber:hmod.Prescriber):
-    return request.dmp.render('prescriberdetail.html')
+    if request.user.is_authenticated:
+        return request.dmp.render('prescriberdetail.html')
+    else:
+        return HttpResponseRedirect('/account/login')
 
 
 @view_function

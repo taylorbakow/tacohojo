@@ -12,25 +12,28 @@ from django.db.models import Q
 
 @view_function
 def process_request(request):
-    formP = PrescriberForm()
-    pList = []
-    objectType = ''
-    if request.method == 'POST':
-        print('test')
-        if len(request.POST['prescribername']) > 0:
-            print('prescriber')
-            pname = request.POST['prescribername']
-            pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()[0:10]
-            objectType = 'Prescriber'
-    else:
-        pass
+    if request.user.is_authenticated:
+        formP = PrescriberForm()
+        pList = []
+        objectType = ''
+        if request.method == 'POST':
+            print('test')
+            if len(request.POST['prescribername']) > 0:
+                print('prescriber')
+                pname = request.POST['prescribername']
+                pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()[0:10]
+                objectType = 'Prescriber'
+        else:
+            pass
 
-    context = {
-        'formP': formP,
-        'pList': pList,
-        'objectType': objectType,
-    }
-    return request.dmp.render('managedata.html', context)
+        context = {
+            'formP': formP,
+            'pList': pList,
+            'objectType': objectType,
+        }
+        return request.dmp.render('managedata.html', context)
+    else:
+        return HttpResponseRedirect('/account/login')
 
 @view_function
 def create(request):

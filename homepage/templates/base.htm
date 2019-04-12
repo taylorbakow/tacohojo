@@ -36,7 +36,7 @@
                     <li class="nav-item">
                         <a class="nav-link ${'active' if request.dmp.page == 'about' else ''}" href="/about/">About</a>
                     </li>
-                    %if request.user.is_authenticated:
+                    %if request.user.groups.filter(name='Health Officials').exists() or request.user.groups.filter(name='Prescribers').exists():
                     <li class="nav-item">
                         <a class="nav-link ${'active' if request.dmp.page == 'analytics' else ''}" href="/analytics/">Analytics</a>
                     </li>
