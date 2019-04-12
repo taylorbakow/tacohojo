@@ -57,8 +57,10 @@ def process_request(request):
                     pList = hmod.Prescriber.objects.filter( Q(Specialty__icontains=pname)).distinct()[0:10]
                 elif attr == 'Gender':
                     pList = hmod.Prescriber.objects.filter( Q(Gender__icontains=pname)).distinct()[0:10]
-                else:
+                elif attr == 'State':
                     pList = hmod.Prescriber.objects.filter( Q(StateAbbrev=pname)).distinct()[0:10]
+                else:
+                    pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()[0:10]
                 objectType = 'Prescriber'
             elif len(request.POST['drugname']) > 0:
                 print('drug')
@@ -92,7 +94,7 @@ class PrescriberForm(forms.Form):
         ("State", "State"), 
     ]
     prescribername = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber', 'placeholder' :'Search Prescriber', 'style': 'font-weight:400;'}), required=False)
-    attribute = forms.CharField(label='', widget=forms.Select(choices=attr, attrs={'class' : 'form-control', 'style' : 'width: 155px; margin-left: 162px; margin-top:5px; font-weight:400;'}))
+    # attribute = forms.CharField(label='', widget=forms.Select(choices=attr, attrs={'class' : 'form-control', 'style' : 'width: 155px; margin-left: 162px; margin-top:5px; font-weight:400;'}))
 
 class DrugForm(forms.Form):
     drugname = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Drug', 'placeholder' :'Search by Drug Name', 'style': 'font-weight:400;'}), required=False)

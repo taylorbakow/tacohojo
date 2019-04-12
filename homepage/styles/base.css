@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Varela Round', sans-serif;
     color: #777788;
     height: 350px;
 }
@@ -13,6 +13,7 @@ html, body {
 header {
     padding: 50px 20px;
     text-align: center;
+    font-family: 'Varela Round', sans-serif;
 }
 
 header > .title {
@@ -22,6 +23,7 @@ header > .title {
     font-weight: bold;
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
     vertical-align: middle;
+    font-family: 'Varela Round', sans-serif;
 }
 
 header img {
@@ -32,12 +34,14 @@ header img {
 main {
     margin: 0;
     padding: 15px;
+    font-family: 'Varela Round', sans-serif;
 }
 
 footer {
     margin-top: 40px;
     border-top: 1px solid #CCCCCC;
     text-align: right;
+    font-family: 'Varela Round', sans-serif;
 }
 
 footer a {
