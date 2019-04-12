@@ -71,7 +71,9 @@ def process_request(request):
             elif len(request.POST['drugname']) > 0:
                 print('drug')
                 dname = request.POST['drugname']
-                if request.POST['isopiod'] == 'on':
+                isopioid = request.POST.get('isopiod', False)
+                print(isopioid)
+                if isopioid is not False:
                     dList = hmod.Opioids.objects.filter(DrugName__icontains=dname, IsOpioid='True')[0:10]
                 else:
                     dList = hmod.Opioids.objects.filter(DrugName__icontains=dname).distinct()[0:10]
