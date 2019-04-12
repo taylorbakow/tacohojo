@@ -1,27 +1,80 @@
 <%inherit file="app_base.htm" />
 
+<%block name="headScript">
+    <script type='text/javascript' src='http://public.tableau.com/javascripts/api/tableau-2.0.0.min.js'>
+    </script>
+
+    
+    <script type='text/javascript'>                    
+        
+        var workbook, activeSheet, viz;
+    
+
+        function initViz() {
+            var containerDiv = document.getElementById("vizContainer");
+            url = "https://public.tableau.com/views/PrescriptionsPerState/Sheet1?:embed=y&:display_count=yes&publish=yes";
+
+           
+            var options = {
+                width: 600,
+                height: 350,
+                hideTabs: true,
+                hideToolbar: true,
+                onFirstInteractive: function () {
+                    workbook = viz.getWorkbook();
+                    activeSheet = workbook.getActiveSheet();
+                    //activeSheet = viz.getActiveSheet();
+                    activeSheet.applyFilterAsync(
+                    "DrugIDd",
+                    "${ drug.DrugID.id }",
+                    tableau.FilterUpdateType.REPLACE);
+                }
+            };
+
+             var viz = new tableau.Viz(containerDiv, url, options);
+        }
+
+
+        
+
+        function filterSingleValue() {
+            
+        }        
+    </script>       
+</%block>
+
+<%block name="tempBody">
+    <body onload="initViz();">
+</%block> 
+
 <%block name="site_center">
-    <table class="table">
-        <thead>
-            <th></th>
-            <th>Drug Name</th>
-            <th>Is Opioids</th>
-            <th></th>
-        </thead>
-        <tbody>
-            <tr>
-                <td></td>
-                <td>${ drug.DrugID.DrugName }</td>
-                <td>${ drug.DrugID.IsOpioid }</td>
-                <td></td>
-            </tr>
-        </tbody> 
-    </table>
+    <div>    
+        <table class="table">
+            <thead>
+                <th></th>
+                <th>Drug Name</th>
+                <th>Type</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td>${ drug.DrugID.DrugName }</td>
+                    %if (drug.DrugID.IsOpioid) == True:
+                        <td>Opioid</td>
+                    %else:
+                        <td>Non-Opioid</td>
+                    %endif
+                    <td></td>
+                </tr>
+            </tbody> 
+        </table>
+    </div>
     <table class="table">
         <thead>
             <th></th>
             <th>Top 10 Prescribers</th>
-            <th>Gender</th>
+            <th>Specialty</th>
             <th># Prescribed</th>
             <th></th>
         </thead>
@@ -34,11 +87,32 @@
                 %else:
                     <td><a href="/homepage/details.prescriberdetail/${ p.PrescriberID.id  }"> ${ p.PrescriberID.Fname } ${ p.PrescriberID.Lname }</a></td>
                 %endif
-                <td>${ p.PrescriberID.Gender }</td>
+                <td>${ p.PrescriberID.Specialty }</td>
                 <td>${ p.QtyPrescribed }</td>
                 <td></td>
             </tr>
             %endfor
         </tbody> 
     </table>
+    <div id="vizContainer" style="margin-left: 30%; margin-right: 10%; position: relative">
+
+    </div>
+    <div class='tableauPlaceholder' id='viz1555013499484' style='position: relative'>
+        <noscript><a href='#'>
+            <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;JH&#47;JH3KGF7K9&#47;1_rss.png' style='border: none' /></a>
+        </noscript>
+        <object class='tableauViz'  style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+            <param name='embed_code_version' value='3' /> 
+            <param name='path' value='shared&#47;JH3KGF7K9' /> 
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;JH&#47;JH3KGF7K9&#47;1.png' /> 
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='filter' value='publish=yes' />
+        </object>
+    </div>                
 </%block>

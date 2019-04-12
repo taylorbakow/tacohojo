@@ -33,6 +33,8 @@ class Prescriber(models.Model):
     HydrocodoneAcetaminophen = models.IntegerField(default=0)
     OxycodoneAcetaminophen = models.IntegerField(default=0)
     Oxycontin = models.IntegerField(default=0)
+    IsOverPrescriber = models.BooleanField(default=0)
+    RiskRating = models.IntegerField(default=0)
 
 class States(models.Model):
     StateAbbrev = models.CharField(primary_key=True, max_length = 2, db_column='StateAbbrev')
