@@ -32,8 +32,12 @@ def process_request(request):
                     pList = hmod.Prescriber.objects.filter( Q(Specialty__icontains=pname)).distinct()[0:10]
                 elif attr == 'Gender':
                     pList = hmod.Prescriber.objects.filter( Q(Gender__icontains=pname)).distinct()[0:10]
-                else:
+                elif attr == 'State':
                     pList = hmod.Prescriber.objects.filter( Q(StateAbbrev=pname)).distinct()[0:10]
+                elif attr is None:
+                    pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()[0:10]
+                else:
+                    pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()[0:10]
 
                 dList = hmod.Opioids.objects.filter(DrugName__icontains=dname).distinct()[0:10]
                 pidList = []
@@ -59,6 +63,8 @@ def process_request(request):
                     pList = hmod.Prescriber.objects.filter( Q(Gender__icontains=pname)).distinct()[0:10]
                 elif attr == 'State':
                     pList = hmod.Prescriber.objects.filter( Q(StateAbbrev=pname)).distinct()[0:10]
+                elif attr is None:
+                    pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()[0:10]
                 else:
                     pList = hmod.Prescriber.objects.filter( Q(Fname__icontains=pname) | Q(Lname__icontains=pname)).distinct()[0:10]
                 objectType = 'Prescriber'

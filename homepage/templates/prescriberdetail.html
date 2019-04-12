@@ -156,7 +156,7 @@
                     <thead>
                         <th></th>
                         <th>Drugs Prescribed by this Doctor</th>
-                        <th>Is Opioid?</th>
+                        <th>Type</th>
                         <th># of Prescriptions</th>
                         <th>Avg Quantity for all Prescribers</th>
                         <th></th>
@@ -166,7 +166,11 @@
                             <tr>
                                 <td></td>
                                 <td><a href="/homepage/details.drugdetail/${ p.DrugID.id  }"> ${ p.DrugID.DrugName }</a></td>
-                                <td>${ p.DrugID.IsOpioid }</td>
+                                %if (p.DrugID.IsOpioid) == true:
+                                    <td>Opioid</td>
+                                %else:
+                                        <td>Non-Opioid</td>
+                                %endif
                                 %if (p.QtyPrescribed) > (p.DrugID.AvgPerscribed):
                                     <td style="color:red">${ p.QtyPrescribed }</td>
                                 %else:
