@@ -96,5 +96,5 @@ class PrescriberForm(forms.Form):
 
 class DrugForm(forms.Form):
     drugname = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Drug', 'placeholder' :'Search by Drug Name'}), required=False)
-    isopiod = forms.BooleanField(label='Only Include Opiods?', widget=forms.CheckboxInput(attrs={'style': 'margin-left: 10px;'}))
+    isopiod = forms.BooleanField(required=False, label='Only Include Opiods?', widget=forms.CheckboxInput(attrs={'style': 'margin-left: 10px;'}))
 
