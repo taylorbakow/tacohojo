@@ -39,3 +39,15 @@ def prescriberdetail(request, prescriberid:hmod.Prescriber):
         'drugs': drugs,
     }
     return request.dmp.render('prescriberdetail.html', context)
+
+@view_function
+    def topDangerous(request, drugid:hmod.Prescriber):
+
+        prescribers = hmod.Drugs_Details.objects.order_by('-QtyPrescribed').filter(DrugID=drugid)[0:30]
+        drug = hmod.Drugs_Details.objects.filter(DrugID=drugid).first()
+
+        context={
+            'drug': drug,
+            'prescribers': prescribers,
+        }
+        return request.dmp.render('drugdetail.html', context)
