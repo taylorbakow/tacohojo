@@ -141,7 +141,7 @@ STATICFILES_DIRS = (
     # SECURITY WARNING: this next line must be commented out at deployment
     BASE_DIR,
 )
-STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # A logger for DMP
