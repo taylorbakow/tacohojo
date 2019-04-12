@@ -69,25 +69,47 @@ def delete(request, pid):
 
 @view_function
 def edit(request, pid):
-    prescriber = hmod.Drugs_Details.objects.filter(PrescriberID_id=pid)
+    prescriber = hmod.Drugs_Details.objects.filter(PrescriberID_id=pid).first()
+    dlist = hmod.Drugs_Details.objects.filter(PrescriberID_id=pid)
     if request.method == 'POST':
-        print('test')
-        form = EditForm(request.POST)
-
-        prescriber.PrescriberID.Fname = request.POST["Fname"]            
-        prescriber.PrescriberID.Lname = request.POST["Lname"]
-        prescriber.PrescriberID.Gender = request.POST["Gender"]
-        prescriber.PrescriberID.Credentials = request.POST["Credentials"]
-        prescriber.PrescriberID.Specialty = request.POST["Specialty"]
-        prescriber.PrescriberID.OpioidPrescriber = request.POST["OpioidPrescriber"]
-        prescriber.PrescriberID.StateAbbrev = request.POST["StateAbbrev"]
-        prescriber.save()
-        return HttpResponseRedirect('/homepage/managedata')
+        if request.POST["NumDrugs"] is None:
+            print('test')
+            form = EditForm(request.POST)
+            formd = EditDrug()
+            prescriber.PrescriberID.id = pid
+            if request.POST["Fname"] is not '':
+                prescriber.PrescriberID.Fname = request.POST["Fname"] 
+            if request.POST["Lname"] is not '':           
+                prescriber.PrescriberID.Lname = request.POST["Lname"]
+            if request.POST["Gender"] is not '':
+                prescriber.PrescriberID.Gender = request.POST["Gender"]
+            if request.POST["Credentials"] is not '':
+                prescriber.PrescriberID.Credentials = request.POST["Credentials"]
+            if request.POST["Specialty"] is not '':
+                prescriber.PrescriberID.Specialty = request.POST["Specialty"]
+            if request.POST["OpioidPrescriber"] is not '':
+                prescriber.PrescriberID.OpioidPrescriber = request.POST["OpioidPrescriber"]
+            if request.POST["StateAbbrev"] is not '':
+                prescriber.PrescriberID.StateAbbrev = request.POST["StateAbbrev"]
+            prescriber.PrescriberID.save()
+            return HttpResponseRedirect('/homepage/managedata')
+        else:
+            form = EditForm()
+            formd = EditDrug(request.POST)
+            drugid =  request.POST["id"]
+            drugamt = hmod.Drugs_Details.objects.filter(PrescriberID_id=pid, DrugID_id=drugid).first()
+            drugamt.QtyPrescribed = request.POST["NumDrugs"]
+            drugamt.save()
+            return HttpResponseRedirect('/homepage/managedata')
+                
     else:
         form = EditForm()
+        formd = EditDrug()
 
     context={
         'form': form,
+        'formd': formd,
+        'dlist': dlist,
         'prescriber': prescriber,
     }
     return request.dmp.render('managedata.edit.html', context)
@@ -121,6 +143,7 @@ class CreateOrEditForm(forms.Form):
 
 
 class EditForm(forms.Form):
+
     GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female')
@@ -130,10 +153,13 @@ class EditForm(forms.Form):
         (True, 'Yes'),
         (False, 'No')
     )
-    Fname = forms.CharField(label="First Name", required=True)
-    Lname = forms.CharField(label="Last Name", required=True)
-    Gender = forms.ChoiceField(label="Gender", required=True, widget=forms.Select(), choices=GENDER_CHOICES)
-    Credentials = forms.CharField(label="Credentials", required=True)
-    Specialty = forms.CharField(label="Specialty", required=True)
-    OpioidPrescriber = forms.ChoiceField(label="Opioid Prescriber?", required=True, widget=forms.Select(), choices=BOOLEAN_CHOICES)
-    StateAbbrev = forms.ModelChoiceField(queryset=hmod.Prescriber.objects.order_by("StateAbbrev__StateAbbrev").values_list("StateAbbrev__StateAbbrev", flat=True).distinct(), label="State", widget=forms.Select(), required=True)
+    Fname = forms.CharField(label="First Name", required=False)
+    Lname = forms.CharField(label="Last Name", required=False)
+    Gender = forms.ChoiceField(label="Gender", required=False, widget=forms.Select(), choices=GENDER_CHOICES)
+    Credentials = forms.CharField(label="Credentials", required=False)
+    Specialty = forms.CharField(label="Specialty", required=False)
+    OpioidPrescriber = forms.ChoiceField(label="Opioid Prescriber?", required=False, widget=forms.Select(), choices=BOOLEAN_CHOICES)
+    StateAbbrev = forms.ModelChoiceField(queryset=hmod.Prescriber.objects.order_by("StateAbbrev__StateAbbrev").values_list("StateAbbrev__StateAbbrev", flat=True).distinct(), label="State", widget=forms.Select(), required=False)
+
+class EditDrug(forms.Form):
+    NumDrugs = forms.IntegerField(label="", required=False, widget=forms.TextInput(attrs={'class' : 'col-1', 'style':'width: 30px;'}))
