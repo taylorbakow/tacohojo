@@ -91,7 +91,7 @@ class PrescriberForm(forms.Form):
         ("Gender", "Gender"), 
         ("State", "State"), 
     ]
-    prescribername = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber', 'placeholder' :'Search by Prescriber'}), required=False)
+    prescribername = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'name': 'Prescriber', 'placeholder' :'Search Prescriber'}), required=False)
     attribute = forms.CharField(label='', widget=forms.Select(choices=attr, attrs={'class' : 'form-control', 'style' : 'width: 155px; margin-left: 162px; margin-top:5px;'}))
 
 class DrugForm(forms.Form):
